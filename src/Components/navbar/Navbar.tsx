@@ -52,7 +52,7 @@ const Navbar = () => {
     return (
         <>
 
-            <section className="w-11/12 m-auto flex items-center justify-between mt-5">
+            <section className="sm:w-10/12 w-11/12  m-auto flex items-center justify-between mt-5">
 
                 <nav className=" w-1/3  flex items-center ">
                     <div className='text-3xl hover:cursor-pointer text-purple-500'>
