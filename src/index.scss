@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./mixins.scss";
+
+
+@font-face {
+  font-family: "Circular-Std";
+  src: url(./assets/fonts/FontsFree-Net-Circular-Std-Book.ttf);
+  // src: url(./assets/fonts/Hellix-Medium.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Circular-Std";
+}
+.toggle-button {
+  background-color: var(--input-dark-color);
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.toggle-button:hover {
+  background-color: rgba(43, 44, 50, 0.186);
+}
