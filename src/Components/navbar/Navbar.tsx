@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
 import './navbar.scss';
-import React, { useState, useRef, KeyboardEvent } from 'react';
+import { useState, useRef, KeyboardEvent } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { FaRegNoteSticky, FaMoon } from 'react-icons/fa6';
-import { BsFillPersonFill, BsSun } from 'react-icons/bs';
+import {  BsSun } from 'react-icons/bs';
 import { IoPersonOutline } from 'react-icons/io5';
 import { BiX } from 'react-icons/bi';
 
@@ -14,7 +15,8 @@ const Navbar = () => {
     const [text, setText] = useState<string>('');                            // useState Hook: Storing Text after Enter 
     const [query, setQuery] = useState<string>('');                          // useState Hook: Storing Text Length
     const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);        // useState Hook: Set dark and Light mode
-
+    
+    console.log("🚀 ~ file: Navbar.tsx:16 ~ Navbar ~ text:", text)
 
     const searchQueryHandler = (event: KeyboardEvent<HTMLInputElement>) =>  // * FUNCTION: Query Handler
     {
