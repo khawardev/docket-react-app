@@ -121,12 +121,12 @@ const Banner = () => {
 
                             <h2 className="text-xl font-semibold mb-4 text-slate-100">Enter name of folder</h2>
                             <input type="text" className='text-xl w-full search-input-header mb-6' autoFocus />
-                            <div className="flex justify-end items-center">
-                                <button className=' px-5 py-2 rounded-tl-full rounded-bl-full  bg-purple-600  text-white hover:bg-purple-500' onClick={handleModal}>
-                                <BiX size={22} />
+                            <div className="flex justify-end gap-2 items-center">
+                                <button className=' px-5 py-2 rounded-full  bg-purple-600  text-white hover:bg-purple-500' onClick={handleModal}>
+                              close
                                 </button>
-                                <button className='  py-2 px-10 rounded-tr-full rounded-br-full bg-purple-500 text-white hover:bg-purple-600'>
-                                <BiCheck size={22} />
+                                <button className='  py-2 px-10  rounded-full bg-purple-500 text-white hover:bg-purple-600'>
+                        save
                                 </button>
                             </div>
                         </div>
