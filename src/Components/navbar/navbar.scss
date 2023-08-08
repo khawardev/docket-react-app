@@ -1,38 +1,41 @@
 @import "../../mixins.scss";
+$color_1: var(--text-dark-white);
+$background-color_3: var(--input-dark-color);
+$background-color_1: white;
+$background-color_2: transparent;
+$background-color_4: rgb(226 232 240);
 
 .search-input-header-div {
   border-radius: 30px;
   padding: 12px;
-  background-color: white;
+  background-color: $background-color_1;
   box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
   @include lg {
     padding: 10px 16px;
   }
 }
 .search-input {
-  width: 165px;
-  background-color: transparent;
+  width: 171px;
+  background-color: $background-color_2;
   outline: 0;
   border: 0;
   animation: mobileSearchFade 0.3s ease-in-out forwards;
-  color: var(--text-dark-white);
-//   display: none;
+  color: $color_1;
   @include md {
     width: 400px;
     display: block;
   }
-}
-.search-input:focus {
-  outline: 0;
-  border: 0;
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
 }
 .toggle-button {
-  background-color: var(--input-dark-color);
+  background-color: $background-color_3;
   box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-}
-.toggle-button:hover {
-  // background-color: rgba(43, 44, 50, 0.186);
-  background-color: rgb(226 232 240 );
+  &:hover {
+    background-color: $background-color_4;
+  }
 }

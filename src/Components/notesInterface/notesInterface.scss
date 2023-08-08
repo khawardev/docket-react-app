@@ -1,0 +1,126 @@
+@import "../../mixins.scss";
+$color_1: white;
+$background-color_1: rgb(192 132 252);
+$background-hover-color_1: rgb(168 85 247);
+
+.Float-Button {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+.menu-container {
+  text-align: center;
+  margin-top: 20px;
+}
+.menu-list {
+  background-color: $background-color_1;
+  border-radius: 16px;
+  padding: 8px 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  li {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px 8px;
+    &:hover {
+      background-color: $background-hover-color_1;
+      border-radius: 10px;
+      color: $color_1;
+    }
+  }
+}
+.left-button {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+  background-color: $background-color_1;
+  &:hover {
+    color: $color_1;
+    background-color: $background-hover-color_1;
+  }
+}
+
+.right-button {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  background-color: $background-color_1;
+  &:hover {
+    color: $color_1;
+    background-color: $background-hover-color_1;
+  }
+}
+.limited-heading-lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+.paragraph-heading-lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+
+
+.milestone-num  {
+  position: relative;
+  color: rgb(241 245 249);
+  text-shadow: -1px 0  $background-color_1,
+      0 1px  $background-color_1,
+      1px 0  $background-color_1,
+      0 -1px  $background-color_1;
+}
+.search-input-header {
+  font-weight: bold;
+  border-radius:  5px;
+  padding: 10px 15px;
+  background: rgba(224, 224, 224, 0.213);
+  color: rgb(249, 250, 250);
+}
+.search-input-header:focus {
+  outline: 0;
+  border: 0;
+}
+.search-input-header::placeholder {
+  color: white;
+  z-index: 1;
+}
+.fadeIn {
+  animation: fadeInAnimation 0.3s ease-in-out forwards;
+}
+
+.fadeOut {
+  animation: fadeOutAnimation 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

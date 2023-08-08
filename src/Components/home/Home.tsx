@@ -1,11 +1,8 @@
-import Navbar from '../navbar/Navbar';
-import Banner from '../banner/Banner';
+import NotesInterface from '../notesInterface/NotesInterface';
 const Home = () => {
     return (
         <>
-            <Navbar />
-            <hr className='mt-5' />
-            <Banner />
+            <NotesInterface />
         </>
     )
 }
