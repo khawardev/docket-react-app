@@ -49,38 +49,36 @@ const Banner = () => {
 
 
     return (
-        <>
+        <div className=' select-none'>
 
             <section className=" w-11/12 m-auto flex items-center mt-7 ">
-                <p className=" sm:text-5xl text-3xl font-extrabold">Notes</p>
+                <p className=" sm:text-5xl text-3xl font-extrabold ">Notes</p>
             </section>
             <section className='w-11/12 m-auto mt-7 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 sm:gap-4 gap-2 '>
 
                 <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
-                    {/* <div className='flex items-center justify-between'>
-                        <button>star</button>
-                    </div> */}
-                    <div className='sm:text-xl text-base font-semibold text-slate-700 limited-heading-lines  select-none' >
+                  
+                    <div className='sm:text-xl text-base font-semibold text-slate-700 limited-heading-lines ' >
                         Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ipsum dolor obcaecati laborum enim unde ad pariatur quas ex ducimus! Sit quo illum nihil excepturi illo deleniti! Voluptatem, labore.
                     </div>
-                    <div className='my-3 text-slate-600 select-none paragraph-heading-lines'>
+                    <div className='my-3 text-slate-600  paragraph-heading-lines'>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, totam Non laborum earum ratione sint qui C Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, totam Non laborum earum ratione sint qui Cupiditate, dicta recusandae.
                     </div>
                     <div className='flex items-center justify-between'>
-                        <p className=' text-sm text-slate-500 select-none'>March 12, 2023</p>
+                        <p className=' text-sm text-slate-500 '>March 12, 2023</p>
                     </div>
                 </main>
 
                 <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
-                    <div className='flex items-center text-center justify-between select-none'>
+                    <div className='flex items-center text-center justify-between '>
                         <p className=' bg-purple-400 rounded-full px-3 text-white '>Personal Notes</p>
-                        <p className='   milestone-num font-bold'>3</p>
+                        <p className=' text-lg milestone-num font-bold'>3</p>
                     </div>
-                    <div className='my-7  text-slate-600 select-none text-8xl justify-center flex' >
+                    <div className='my-7  text-slate-600  text-8xl justify-center flex' >
                         <span ><FiFolder /></span>
                     </div>
                     <div className='flex items-center '>
-                        <p className=' text-sm text-slate-500 select-none'>March 12, 2023</p>
+                        <p className=' text-sm text-slate-500 '>March 12, 2023</p>
                     </div>
                 </main>
 
@@ -93,11 +91,11 @@ const Banner = () => {
                         <ul className="menu-list" >
                             <li onClick={() => { toggleMenu(); handleModal(); }} className='flex items-center gap-3'>
                                 <span><FiFolder size={20} /></span>
-                                <p className='mt-1 select-none'>Folder</p>
+                                <p className='mt-1 '>Folder</p>
                             </li>
                             <li className='flex items-center gap-3' onClick={() => Navigate("new-notes")}>
                                 <span ><LuStickyNote size={20} /></span>
-                                <p className='mt-1 select-none'>Notes</p>
+                                <p className='mt-1 '>Notes</p>
                             </li>
                         </ul>
                     )}
@@ -123,12 +121,12 @@ const Banner = () => {
 
                             <h2 className="text-xl font-semibold mb-4 text-slate-100">Enter name of folder</h2>
                             <input type="text" className='text-xl w-full search-input-header mb-6' autoFocus />
-                            <div className="flex justify-end gap-3 items-center">
-                                <button className=' px-5 py-2 rounded-full  bg-purple-500  text-white hover:bg-purple-600' onClick={handleModal}>
-                                    close
+                            <div className="flex justify-end items-center">
+                                <button className=' px-5 py-2 rounded-tl-full rounded-bl-full  bg-purple-600  text-white hover:bg-purple-500' onClick={handleModal}>
+                                <BiX size={22} />
                                 </button>
-                                <button className='  py-2 px-10 rounded-full bg-purple-500 text-white hover:bg-purple-600'>
-                                    save
+                                <button className='  py-2 px-10 rounded-tr-full rounded-br-full bg-purple-500 text-white hover:bg-purple-600'>
+                                <BiCheck size={22} />
                                 </button>
                             </div>
                         </div>
@@ -137,7 +135,7 @@ const Banner = () => {
             )}
 
 
-        </>
+        </div>
     )
 }
 

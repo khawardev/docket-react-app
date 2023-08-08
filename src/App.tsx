@@ -9,9 +9,10 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <hr className='mt-5' />
+
       <Router>
+        <Navbar />
+        <hr className='mt-5' />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="new-notes" element={<Newnotes />} />
