@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import './notesInterface.scss';
 import FolderInterface from './folderInterface/FolderInterface';
 import FloatButton from './floatButton/FloatButton';
@@ -7,14 +6,16 @@ import { Context } from '../../context/AppContext'; // Assuming your context fil
 const Banner = () => {
 
     const contextValue = useContext(Context);
-    let folderText, NotesText = '';
+    let folderText= '';
+    let NotesText =''
     if (contextValue) {
         const { folderText: contextfolderText , NotesText: contextNotesText } = contextValue;
         folderText = contextfolderText;
         NotesText = contextNotesText;
     }
 
-
+    console.log("🚀 ~ file: NotesInterface.tsx:10 ~ Banner ~ folderText:", folderText)
+    console.log("🚀 ~ file: NotesInterface.tsx:12 ~ Banner ~ NotesText:", NotesText)
 
 
 
