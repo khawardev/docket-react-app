@@ -1,27 +1,23 @@
 import './notesInterface.scss';
 import FolderInterface from './folderInterface/FolderInterface';
 import FloatButton from './floatButton/FloatButton';
-import { useContext } from 'react';
+import { useContext ,useState} from 'react';
 import { Context } from '../../context/AppContext'; // Assuming your context file is named "AppContext.tsx"
 const Banner = () => {
 
     const contextValue = useContext(Context);
-    let folderText= '';
-    let NotesText =''
+    let [newfoldertext] = useState<string>(''); // Set a default value
     if (contextValue) {
-        const { folderText: contextfolderText , NotesText: contextNotesText } = contextValue;
-        folderText = contextfolderText;
-        NotesText = contextNotesText;
+      const { newfoldertext: contextfolderText} = contextValue;
+      newfoldertext = contextfolderText;
+     
     }
-
-    console.log("🚀 ~ file: NotesInterface.tsx:10 ~ Banner ~ folderText:", folderText)
-    console.log("🚀 ~ file: NotesInterface.tsx:12 ~ Banner ~ NotesText:", NotesText)
 
 
 
     return (
         <div className='select-none'>
-            <FolderInterface />
+            <FolderInterface newfoldertext={newfoldertext}/>
             <section className="w-11/12 m-auto flex items-center mt-7">
                 <p className="sm:text-4xl text-3xl font-extrabold">Notes</p>
             </section>

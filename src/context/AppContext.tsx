@@ -8,6 +8,8 @@ type ContextType =  {
     setFolderText: React.Dispatch<React.SetStateAction<string>>;
     NotesText: string;
     setNotesText: React.Dispatch<React.SetStateAction<string>>;
+    newfoldertext: string;
+    setNewFolderText: React.Dispatch<React.SetStateAction<string>>;
 }
 interface AppContextProps  {
     children: ReactNode;
@@ -15,14 +17,18 @@ interface AppContextProps  {
 
 export const Context = createContext<ContextType | null>(null);
 const AppContext = ({ children }: AppContextProps) => {
-    const [folderText, setFolderText] = useState<string>('heheh');
-    const [NotesText, setNotesText] = useState<string>('a');
+    const [folderText, setFolderText] = useState<string>('');
+    const [NotesText, setNotesText] = useState<string>('');
+    const [newfoldertext,setNewFolderText ] = useState<string>('');   
+    console.log("🚀 ~ file: AppContext.tsx:23 ~ AppContext ~ newfoldertext:", newfoldertext)
+
 
     return (
         <Context.Provider
             value={{
                 folderText, setFolderText,
-                NotesText, setNotesText
+                NotesText, setNotesText,
+                newfoldertext, setNewFolderText
             }}>
             {children}
         </Context.Provider>

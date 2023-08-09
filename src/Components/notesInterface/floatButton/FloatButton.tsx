@@ -1,11 +1,26 @@
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { FiFolder } from 'react-icons/fi';
 import { LuStickyNote } from 'react-icons/lu';
 import { BiCheck, BiX } from 'react-icons/bi';
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { Context } from '../../../context/AppContext'; 
 const FloatButton = () => {
+
+
+    const contextValue = useContext(Context);
+    let [newfoldertext, setNewFolderText] = useState<string>(''); // Set a default value
+    if (contextValue) {
+      const { newfoldertext: contextfolderText, setNewFolderText: contextsetfolderText } = contextValue;
+      newfoldertext = contextfolderText;
+      setNewFolderText = contextsetfolderText;
+    }
+  
+    console.log("🚀 ~ file: FloatButton.tsx:15 ~ FloatButton ~ newfoldertext:", newfoldertext);
+  
+
 
     const [DeletemenuVisible, setDeletemenuVisible] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
@@ -39,8 +54,25 @@ const FloatButton = () => {
     };
 
 
+                             // useState Hook: Storing Text after Enter 
+    const [query, setQuery] = useState<string>('');
+    const searchQueryHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter' && query.length > 0) {
+            setNewFolderText(event.currentTarget.value);
+            setQuery('');
+            handleModal()
 
-    
+        }
+    };
+    const QueryHandler = () => {
+        if (query.length > 0) {
+            setNewFolderText(query);
+            setQuery('');
+        }
+        handleModal();
+    };
+
+
     return (
         <div>
 
@@ -81,12 +113,19 @@ const FloatButton = () => {
                         <div className="bg-purple-400 p-6 rounded-2xl shadow-lg sm:w-1/3 w-11/12 transition-opacity ease-in-out duration-1000">
 
                             <h2 className="text-xl font-semibold mb-4 text-slate-100">Enter name of folder</h2>
-                            <input type="text" className='text-lg w-full search-input-header mb-6' autoFocus />
+                            <input
+                                type="text"
+                                className='text-lg w-full search-input-header mb-6'
+                                autoFocus
+                                onChange={(event) => setQuery(event.target.value)}
+                                onKeyUp={searchQueryHandler}
+
+                            />
                             <div className="flex justify-end gap-2 items-center">
                                 <button className=' px-5 py-2 rounded-full  bg-purple-600  text-white hover:bg-purple-500' onClick={handleModal}>
                                     close
                                 </button>
-                                <button className='  py-2 px-10  rounded-full bg-purple-500 text-white hover:bg-purple-600'>
+                                <button onClick={QueryHandler} className='  py-2 px-10  rounded-full bg-purple-500 text-white hover:bg-purple-600'>
                                     save
                                 </button>
                             </div>
