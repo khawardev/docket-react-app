@@ -1,0 +1,27 @@
+@import '../../mixins.scss';
+.animated-text {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 63px;
+    @include sm{
+        top: 70px;
+        right: 114px;
+    }
+    animation: slideDown 0.5s ease-in-out;
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

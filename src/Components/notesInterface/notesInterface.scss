@@ -104,7 +104,7 @@ $background-hover-color_1: rgb(168 85 247);
 }
 
 .fadeOut {
-  animation: fadeOutAnimation 0.3s ease-in-out forwards;
+  animation: fadeOutAnimation 0.3s ease-in-out backwards;
 }
 
 @keyframes fadeInAnimation {

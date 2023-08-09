@@ -1,7 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import './index.scss'
-
+import AppContext from './context/AppContext.tsx'
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <App />
+    <AppContext>
+        <App />
+    </AppContext>
 )
