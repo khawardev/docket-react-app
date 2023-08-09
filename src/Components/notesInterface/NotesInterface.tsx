@@ -50,14 +50,69 @@ const Banner = () => {
 
     return (
         <div className=' select-none'>
-
             <section className=" w-11/12 m-auto flex items-center mt-7 ">
-                <p className=" sm:text-5xl text-3xl font-extrabold ">Notes</p>
+                <p className=" sm:text-4xl text-3xl font-extrabold ">Folders</p>
+            </section>
+            <section className='w-11/12 m-auto mt-7 grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 sm:gap-4 gap-2 '>
+                <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
+                    <div className=' flex items-center  justify-between  '>
+                        <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>Personal Notes</p>
+                        <p className=' text-lg milestone-num font-bold'>3</p>
+                    </div>
+                    <div className='my-7  text-slate-600  sm:text-8xl text-6xl justify-center flex' >
+                        <span ><FiFolder /></span>
+                    </div>
+                    <div className='flex items-center sm:justify-start justify-center '>
+                        <p className=' text-sm text-slate-500 '>March 12, 2023</p>
+                    </div>
+                </main>
+                <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
+                    <div className=' flex items-center  justify-between  '>
+                        <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>Personal Notes</p>
+                        <p className=' text-lg milestone-num font-bold'>3</p>
+                    </div>
+                    <div className='my-7  text-slate-600  sm:text-8xl text-6xl justify-center flex' >
+                        <span ><FiFolder /></span>
+                    </div>
+                    <div className='flex items-center sm:justify-start justify-center '>
+                        <p className=' text-sm text-slate-500 '>March 12, 2023</p>
+                    </div>
+                </main>
+                <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
+                    <div className=' flex items-center  justify-between  '>
+                        <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>Personal Notes</p>
+                        <p className=' text-lg milestone-num font-bold'>3</p>
+                    </div>
+                    <div className='my-7  text-slate-600  sm:text-8xl text-6xl justify-center flex' >
+                        <span ><FiFolder /></span>
+                    </div>
+                    <div className='flex items-center sm:justify-start justify-center '>
+                        <p className=' text-sm text-slate-500 '>March 12, 2023</p>
+                    </div>
+                </main>
+                <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
+                    <div className=' flex items-center  justify-between  '>
+                        <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>Personal Notes</p>
+                        <p className=' text-lg milestone-num font-bold'>3</p>
+                    </div>
+                    <div className='my-7  text-slate-600  sm:text-8xl text-6xl justify-center flex' >
+                        <span ><FiFolder /></span>
+                    </div>
+                    <div className='flex items-center sm:justify-start justify-center '>
+                        <p className=' text-sm text-slate-500 '>March 12, 2023</p>
+                    </div>
+                </main>
+               
+
+
+            </section>
+            <section className=" w-11/12 m-auto flex items-center mt-7 ">
+                <p className=" sm:text-4xl text-3xl font-extrabold ">Notes</p>
             </section>
             <section className='w-11/12 m-auto mt-7 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 sm:gap-4 gap-2 '>
 
                 <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
-                  
+
                     <div className='sm:text-xl text-base font-semibold text-slate-700 limited-heading-lines ' >
                         Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae ipsum dolor obcaecati laborum enim unde ad pariatur quas ex ducimus! Sit quo illum nihil excepturi illo deleniti! Voluptatem, labore.
                     </div>
@@ -65,19 +120,6 @@ const Banner = () => {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, totam Non laborum earum ratione sint qui C Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, totam Non laborum earum ratione sint qui Cupiditate, dicta recusandae.
                     </div>
                     <div className='flex items-center justify-between'>
-                        <p className=' text-sm text-slate-500 '>March 12, 2023</p>
-                    </div>
-                </main>
-
-                <main className=' bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
-                    <div className='flex items-center text-center justify-between '>
-                        <p className=' bg-purple-400 rounded-full px-3 text-white '>Personal Notes</p>
-                        <p className=' text-lg milestone-num font-bold'>3</p>
-                    </div>
-                    <div className='my-7  text-slate-600  text-8xl justify-center flex' >
-                        <span ><FiFolder /></span>
-                    </div>
-                    <div className='flex items-center '>
                         <p className=' text-sm text-slate-500 '>March 12, 2023</p>
                     </div>
                 </main>
@@ -120,13 +162,13 @@ const Banner = () => {
                         <div className="bg-purple-400 p-6 rounded-2xl shadow-lg sm:w-1/3 w-11/12 transition-opacity ease-in-out duration-1000">
 
                             <h2 className="text-xl font-semibold mb-4 text-slate-100">Enter name of folder</h2>
-                            <input type="text" className='text-xl w-full search-input-header mb-6' autoFocus />
+                            <input type="text" className='text-lg w-full search-input-header mb-6' autoFocus />
                             <div className="flex justify-end gap-2 items-center">
                                 <button className=' px-5 py-2 rounded-full  bg-purple-600  text-white hover:bg-purple-500' onClick={handleModal}>
-                              close
+                                    close
                                 </button>
                                 <button className='  py-2 px-10  rounded-full bg-purple-500 text-white hover:bg-purple-600'>
-                        save
+                                    save
                                 </button>
                             </div>
                         </div>

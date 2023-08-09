@@ -53,11 +53,11 @@ const Navbar = () => {
         <>
 
             <section className="sm:w-10/12 w-11/12  m-auto flex items-center justify-between mt-5">
-                <nav className=" w-1/3  flex items-center hover:cursor-pointer " onClick={() => Navigate("/")}>
-                    <div className='text-3xl  text-purple-500'>
+                <nav className=" w-1/3  flex items-center  text-purple-500 " >
+                    <div className='text-3xl hover:cursor-pointer' onClick={() => Navigate("/")}>
                         <FaRegNoteSticky />
                     </div>
-                    <a className="text-3xl  text-purple-500 font-extrabold">Docket</a>
+                    <a className="text-3xl  font-extrabold hover:cursor-pointer" onClick={() => Navigate("/")}>Docket</a>
                 </nav>
 
                 <main className=" w-2/3 flex sm:justify-between justify-end items-center gap-2 ">
