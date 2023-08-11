@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useState, KeyboardEvent } from 'react';
 import { RiAddFill } from 'react-icons/ri';
@@ -22,6 +21,7 @@ const FloatButton: React.FC = () => {
     }
 
 
+    console.log("🚀 ~ file: FloatButton.tsx:17 ~ newfoldertext:", newfoldertext)
 
     const [ispopup, setIspopup] = useState(false);
 

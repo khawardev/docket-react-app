@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import './navbar.scss';
 import { useState, useRef, KeyboardEvent } from 'react';
@@ -14,6 +13,7 @@ const Navbar: React.FC = () => {
 
     const inputRef = useRef<HTMLInputElement | null>(null);                  // REF Hook: Disapear cursor after Enter 
     const [text, setText] = useState<string>('');                            // useState Hook: Storing Text after Enter 
+    console.log("🚀 ~ file: Navbar.tsx:16 ~ text:", text)
     const [query, setQuery] = useState<string>('');                          // useState Hook: Storing Text Length
     const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);        // useState Hook: Set dark and Light mode
     // console.log(text)
