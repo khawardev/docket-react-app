@@ -5,7 +5,7 @@ import { Context } from '../../context/AppContext';
 import FloatButton from '../homeInterface/floatButton/FloatButton';
 import React from 'react';
 
-const Home = () => {
+const Home: React.FC = () => {
 
     const contextValue = useContext(Context);
     let [newfoldertext] = useState<string>(''); 

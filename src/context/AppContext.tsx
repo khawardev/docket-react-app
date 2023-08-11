@@ -12,7 +12,7 @@ interface AppContextProps  {
 }
 
 export const Context = createContext<ContextType | null>(null);
-const AppContext = ({ children }: AppContextProps) => {
+const AppContext: React.FC<AppContextProps> = ({ children }: AppContextProps) => {
     const [newfoldertext,setNewFolderText ] = useState<string>('');   
 
 

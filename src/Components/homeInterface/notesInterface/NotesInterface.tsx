@@ -1,6 +1,6 @@
 import './notesInterface.scss';
 import React from 'react';
-const Banner = () => {
+const Banner: React.FC = () => {
 
     return (
         <div className='select-none'>

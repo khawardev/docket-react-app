@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { Context } from '../../../context/AppContext';
 import React, { useEffect } from 'react';
-const FloatButton = () => {
+const FloatButton: React.FC = () => {
 
 
     const contextValue = useContext(Context);

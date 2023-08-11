@@ -8,7 +8,7 @@ type Data = {
     description: string;
 }
 
-const Newnotes = () => {
+const Newnotes: React.FC = () => {
     const [textareatext, settextareaText] = useState<string>('');
     const [inputtext, setinputText] = useState<string>('');
     const [IsSave, setIsSave] = useState(false); // State to track typing status

@@ -24,7 +24,7 @@ const DateCapture = () => {
 
 
 
-const NewFolder = (props: folderprops) => {
+const NewFolder: React.FC<folderprops> = (props: folderprops) => {
 
     const data = props.newfoldertext;
     const [folderData, setFolderData] = useState<string[]>([]);

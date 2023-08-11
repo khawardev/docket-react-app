@@ -8,7 +8,7 @@ import { BsSun } from 'react-icons/bs';
 import { IoPersonOutline } from 'react-icons/io5';
 import { BiX } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-const Navbar = () => {
+const Navbar: React.FC = () => {
 
     const Navigate = useNavigate();
 
