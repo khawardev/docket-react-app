@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
+import React from 'react';
 import './navbar.scss';
 import { useState, useRef, KeyboardEvent } from 'react';
 import { FiSearch } from 'react-icons/fi';
@@ -16,7 +16,7 @@ const Navbar = () => {
     const [text, setText] = useState<string>('');                            // useState Hook: Storing Text after Enter 
     const [query, setQuery] = useState<string>('');                          // useState Hook: Storing Text Length
     const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);        // useState Hook: Set dark and Light mode
-    console.log(text)
+    // console.log(text)
 
     const searchQueryHandler = (event: KeyboardEvent<HTMLInputElement>) =>   // FUNCTION: Query Handler
     {

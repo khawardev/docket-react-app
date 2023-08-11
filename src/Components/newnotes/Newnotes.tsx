@@ -2,6 +2,7 @@ import { IoChevronBack } from 'react-icons/io5';
 import { HiOutlineStar } from 'react-icons/hi';
 import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 import './newNotes.scss';
+import React from 'react';
 type Data = {
     title: string;
     description: string;
