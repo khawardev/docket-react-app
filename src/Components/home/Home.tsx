@@ -1,23 +1,22 @@
 import FolderInterface from '../homeInterface/folderInterface/FolderInterface';
 import NotesInterface from '../homeInterface/notesInterface/NotesInterface';
-import { useContext ,useState} from 'react';
+import { useContext } from 'react';
 import { Context } from '../../context/AppContext';
 import FloatButton from '../homeInterface/floatButton/FloatButton';
 import React from 'react';
 
 const Home: React.FC = () => {
-
-    const contextValue = useContext(Context);
-    let [newfoldertext] = useState<string>(''); 
-    if (contextValue) {
-      const { newfoldertext: contextfolderText} = contextValue;
-      newfoldertext = contextfolderText;
-     
+    const context = useContext(Context)
+    if (!context) {
+        return 'null';
     }
+    const { newFolderText } = context;
+
+
 
     return (
         <>
-            <FolderInterface newfoldertext={newfoldertext}/>
+            <FolderInterface newFolderText={newFolderText} />
             <NotesInterface />
             <FloatButton />
 

@@ -4,7 +4,7 @@ import { FiFolder } from 'react-icons/fi';
 import React from 'react';
 import { useState, useEffect } from 'react';
 type folderprops = {
-    newfoldertext: string;
+    newFolderText: string;
 }
 const DateCapture = () => {
     const currentDate = new Date();
@@ -20,13 +20,9 @@ const DateCapture = () => {
 };
 
 
-
-
-
-
 const NewFolder: React.FC<folderprops> = (props: folderprops) => {
 
-    const data = props.newfoldertext;
+    const data = props?.newFolderText;
     const [folderData, setFolderData] = useState<string[]>([]);
     useEffect(() => {
         if (data.trim() !== '' && data.length <= 13) {
@@ -36,12 +32,11 @@ const NewFolder: React.FC<folderprops> = (props: folderprops) => {
 
 
 
-    console.log("🚀 ~ file: FolderInterface.tsx:40 ~ NewFolder ~ lastIndex:", folderData)
     return (
         <>
             {folderData.length !== 0 &&
                 <div className=' select-none'>
-                    <section className=" w-11/12 m-auto flex items-center mt-7 ">
+                    <section className=" w-11/12 m-auto flex items-center mt-7">
                         <p className=" sm:text-4xl text-3xl font-extrabold ">Folders</p>
                     </section>
 

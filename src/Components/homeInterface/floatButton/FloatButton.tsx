@@ -10,18 +10,7 @@ import { useContext } from 'react';
 import { Context } from '../../../context/AppContext';
 import React, { useEffect } from 'react';
 const FloatButton: React.FC = () => {
-
-
-    const contextValue = useContext(Context);
-    let [newfoldertext, setNewFolderText] = useState<string>(''); // Set a default value
-    if (contextValue) {
-        const { newfoldertext: contextfolderText, setNewFolderText: contextsetfolderText } = contextValue;
-        newfoldertext = contextfolderText;
-        setNewFolderText = contextsetfolderText;
-    }
-
-
-    console.log("🚀 ~ file: FloatButton.tsx:17 ~ newfoldertext:", newfoldertext)
+  
 
     const [ispopup, setIspopup] = useState(false);
 
@@ -30,6 +19,34 @@ const FloatButton: React.FC = () => {
     const [bgcolor, setBgcolor] = useState<string>('bg-purple-400');
     const [textcolor, setTextcolor] = useState<string>('text-black');
     const Navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [query, setQuery] = useState<string>('');
+
+    useEffect(() => {
+        let timeout: ReturnType<typeof setTimeout>;
+        if (ispopup) {
+            timeout = setTimeout(() => {
+                setIspopup(false);
+            }, 1000);
+        }
+
+        return () => {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+        };
+    }, [ispopup]);
+
+
+    const context = useContext(Context)
+    if (!context) {
+        return 'null'; 
+    }
+    const {setNewFolderText} = context; 
+
+
+
+
 
     const toggleMenu = () => {
         setMenuVisible(!menuVisible)
@@ -49,15 +66,14 @@ const FloatButton: React.FC = () => {
     };
 
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleModal = () => {
         setIsModalOpen(!isModalOpen);
+        setQuery('');
     };
 
 
     // useState Hook: Storing Text after Enter 
-    const [query, setQuery] = useState<string>('');
     const searchQueryHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter' && query.length > 0 && query.length <= 13) {
             setNewFolderText(event.currentTarget.value);
@@ -81,21 +97,7 @@ const FloatButton: React.FC = () => {
 
 
 
-    useEffect(() => {
-        let timeout: ReturnType<typeof setTimeout>;
-        if (ispopup) {
-            timeout = setTimeout(() => {
-                setIspopup(false);
-            }, 1000);
-        }
-
-        return () => {
-            if (timeout) {
-                clearTimeout(timeout);
-            }
-        };
-    }, [ispopup]);
-
+   
 
 
 
@@ -162,6 +164,8 @@ const FloatButton: React.FC = () => {
                                     <button onClick={QueryHandler} className='  py-2 px-10  rounded-full bg-purple-500 text-white hover:bg-purple-600'>
                                         save
                                     </button>
+                                   
+
                                 </div>
                             </div>
                         </div>

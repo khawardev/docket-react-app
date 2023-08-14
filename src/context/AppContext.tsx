@@ -1,31 +1,40 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-unreachable */
-import React, { createContext, useState, ReactNode } from "react";
-
-type ContextType =  {
-    newfoldertext: string;
-    setNewFolderText: React.Dispatch<React.SetStateAction<string>>;
+import React, { createContext, useState } from "react";
+interface NotesData {
+    title: string;
+    description: string;
 }
-interface AppContextProps  {
-    children: ReactNode;
+
+interface ContextType {
+    newFolderText: string;
+    setNewFolderText: React.Dispatch<React.SetStateAction<string>>;
+    NotesOjectdata: NotesData;
+    setNotesOjectData: React.Dispatch<React.SetStateAction<NotesData>>;
+}
+
+interface AppContextProps {
+    children: React.ReactNode;
 }
 
 export const Context = createContext<ContextType | null>(null);
-const AppContext: React.FC<AppContextProps> = ({ children }: AppContextProps) => {
-    const [newfoldertext,setNewFolderText ] = useState<string>('');   
 
-
+const AppContext = ({ children }: AppContextProps) => {
+    const [newFolderText, setNewFolderText] = useState<string>('');
+    const [NotesOjectdata, setNotesOjectData] = useState<NotesData>({
+        title: '',
+        description: '',
+    });
+    const contextValue: ContextType = {
+        newFolderText,
+        setNewFolderText,
+        NotesOjectdata,
+        setNotesOjectData,
+    };
     return (
         <Context.Provider
-            value={{
-                newfoldertext, setNewFolderText
-            }}>
+            value={contextValue} >
             {children}
         </Context.Provider>
     );
 };
 
 export default AppContext;
-
-
