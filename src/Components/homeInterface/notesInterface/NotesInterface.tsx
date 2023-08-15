@@ -1,27 +1,34 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './notesInterface.scss';
 import React from 'react';
-import { useContext, useState, useEffect } from 'react';
-import { Context } from '../../../context/AppContext';
+import { useSelector } from 'react-redux';
 import NoteComponent from './noteComponent/NoteComponent';
+import { RootState } from '../../../reduxToolkit/store/store';
 
-interface DataObject {
-    title: string;
-    description: string;
-}
+// import { useContext, useState, useEffect } from 'react';
+// import { Context } from '../../../context/AppContext';
+// interface DataObject {
+//     title: string;
+//     description: string;
+// }
+
 const NotesInterface: React.FC = () => {
 
-    const [dataList, setDataList] = useState<DataObject[]>([]);
-    const context = useContext(Context);
-    useEffect(() => {
-        console.log("🚀 ~ file: NotesInterface.tsx:17 ~ useEffect ~ useEffect:")
-        if (context) {
-            const { NotesOjectdata } = context;
-            setDataList((prevArray) => [...prevArray, NotesOjectdata]);
-        }
-    }, [context?.NotesOjectdata.title !== '' &&context?.NotesOjectdata.description !== '']);
+    // const [dataList, setDataList] = useState<DataObject[]>([]);
+    // console.log("🚀 ~ file: NotesInterface.tsx:15 ~ dataList:", dataList)
+    // const context = useContext(Context);
+    // useEffect(() => {
+    //     if (context) {
+    //         const { NotesOjectdata } = context;
+    //         setDataList((prevArray) => [...prevArray, NotesOjectdata]);
+    //     }
+    // }, [context?.NotesOjectdata.title !== '' && context?.NotesOjectdata.description !== '']);
 
-    console.log("🚀 ~ file: NotesInterface.tsx:25 ~ context?.NotesOjectdata.title:", context?.NotesOjectdata.title)
+    const dataList = useSelector((state: RootState) => state.NewNotes.NotesArray);
+    console.log("🚀 ~ file: NotesInterface.tsx:28 ~ dataList:", dataList)
+
+
+    
     return (
         <>
             <div className='select-none'>
@@ -34,6 +41,7 @@ const NotesInterface: React.FC = () => {
                     ))}
                 </section>
             </div>
+
         </>
 
     );

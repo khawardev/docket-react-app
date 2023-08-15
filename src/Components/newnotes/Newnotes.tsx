@@ -1,44 +1,55 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
 import { HiOutlineStar } from 'react-icons/hi';
-import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
+import { ChangeEvent, useState, KeyboardEvent } from 'react';
 import './newNotes.scss';
 // import  {useHistory}  from 'react';
 // import { useNavigate } from "react-router-dom";
-import { useContext } from 'react';
-import { Context } from '../../context/AppContext';
+// import { useContext } from 'react';
+// import { Context } from '../../context/AppContext';
 // type Data = {
 //     title: string;
 //     description: string;
 // }
-
+import { useDispatch } from 'react-redux';
+import { addData } from '../../reduxToolkit/dataSlice/Dataslice';
 const Newnotes = () => {
     const [Title, setTitle] = useState<string>('');
     const [Description, setDescription] = useState<string>('');
     const [IsSavebutton, setIsSavebutton] = useState(false); // State to track typing status
     const [savedtext, setSavedText] = useState(false)
     const [isSaving, setIsSaving] = useState(false);
-    useEffect(() => {
-        { Title === '' && Description === '' && setNotesOjectData({ title: '', description: '' }) }
-    }, [Title, Description === ''])
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //     { Title === '' && Description === '' && setNotesOjectData({ title: '', description: '' }) }
+    // }, [Title, Description === ''])
 
 
 
 
 
 
-    const context = useContext(Context)
-    if (!context) {
-        return 'null'; 
-    }
-    const {setNotesOjectData } = context;
+    // const context = useContext(Context)
+    // if (!context) {
+    //     return 'null'; 
+    // }
+    // const {setNotesOjectData } = context;
 
 
+
+
+
+    // const handleAddData = () => {
+    //     const newData = { title, description };
+    //     dispatch(addData(newData));
+    // };
 
 
     const handleButtonClick = () => {
         const newItem = { title: Title, description: Description };
-        setNotesOjectData(newItem);
+        // setNotesOjectData(newItem);
+        dispatch(addData(newItem));
         setIsSaving(true);
         setTimeout(() => {
             setIsSaving(false);
