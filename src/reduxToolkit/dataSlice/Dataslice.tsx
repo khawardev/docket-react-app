@@ -1,27 +1,51 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface NewNotes {
     title: string;
     description: string;
 }
-
-interface DataState {
-    NotesArray: NewNotes[];
+interface NotesState {
+    NewNotesArray: NewNotes[];
 }
-
-const initialState: DataState = {
-    NotesArray: [],
+const initialNotesState: NotesState = {
+    NewNotesArray: [],
 };
-
-const dataSlice = createSlice({
-    name: 'data',
-    initialState,
+const notesSlice = createSlice({
+    name: 'notes',
+    initialState: initialNotesState,
     reducers: {
-        addData: (state, action: PayloadAction<NewNotes>) => {
-            state.NotesArray.unshift(action.payload);
+        addNotes: (state, action: PayloadAction<NewNotes>) => {
+            state.NewNotesArray.unshift(action.payload);
+        },
+
+    },
+});
+export const { addNotes } = notesSlice.actions;
+export const NotesSlice = notesSlice.reducer;
+
+
+
+
+
+interface NewFolder {
+    newFolder: string
+}
+interface FolderState {
+    NewFolderArray: NewFolder[];
+}
+const initialFolderState: FolderState = {
+    NewFolderArray: [],
+};
+const folderSlice = createSlice({
+    name: 'folders',
+    initialState: initialFolderState,
+    reducers: {
+        addFolder: (state, action: PayloadAction<NewFolder>) => {
+            state.NewFolderArray.unshift(action.payload);
         },
     },
 });
 
-export const { addData } = dataSlice.actions;
-export default dataSlice.reducer;
+export const { addFolder } = folderSlice.actions;
+export const FolderSlice = folderSlice.reducer; 

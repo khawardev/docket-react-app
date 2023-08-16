@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import { Context } from '../../../context/AppContext';
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFolder } from '../../../reduxToolkit/dataSlice/Dataslice';
 const FloatButton: React.FC = () => {
   
 
@@ -21,6 +23,7 @@ const FloatButton: React.FC = () => {
     const Navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [query, setQuery] = useState<string>('');
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let timeout: ReturnType<typeof setTimeout>;
@@ -83,11 +86,15 @@ const FloatButton: React.FC = () => {
             setIspopup(true)
         }
     };
+ 
     const QueryHandler = () => {
 
-
+        
         if (query.length > 0 && query.length <= 13) {
-            setNewFolderText(query);
+            const folderObject = {
+                newFolder: query, 
+            };
+            dispatch(addFolder(folderObject))
             setQuery('');
             handleModal();
         } else {
@@ -96,8 +103,7 @@ const FloatButton: React.FC = () => {
     };
 
 
-
-   
+    
 
 
 

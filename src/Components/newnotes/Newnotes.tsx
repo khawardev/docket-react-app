@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
 import { HiOutlineStar } from 'react-icons/hi';
-import { ChangeEvent, useState, KeyboardEvent } from 'react';
+import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 import './newNotes.scss';
 // import  {useHistory}  from 'react';
 // import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import './newNotes.scss';
 //     description: string;
 // }
 import { useDispatch } from 'react-redux';
-import { addData } from '../../reduxToolkit/dataSlice/Dataslice';
+import { addNotes } from '../../reduxToolkit/dataSlice/Dataslice';
 const Newnotes = () => {
     const [Title, setTitle] = useState<string>('');
     const [Description, setDescription] = useState<string>('');
@@ -20,7 +20,9 @@ const Newnotes = () => {
     const [savedtext, setSavedText] = useState(false)
     const [isSaving, setIsSaving] = useState(false);
     const dispatch = useDispatch();
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []); 
     // useEffect(() => {
     //     { Title === '' && Description === '' && setNotesOjectData({ title: '', description: '' }) }
     // }, [Title, Description === ''])
@@ -48,8 +50,10 @@ const Newnotes = () => {
 
     const handleButtonClick = () => {
         const newItem = { title: Title, description: Description };
-        // setNotesOjectData(newItem);
-        dispatch(addData(newItem));
+        dispatch(addNotes(newItem));
+
+
+        
         setIsSaving(true);
         setTimeout(() => {
             setIsSaving(false);
@@ -58,6 +62,7 @@ const Newnotes = () => {
             setIsSavebutton(false);
         }, 1800);
         setSavedText(false)
+        // setNotesOjectData(newItem);
     };
 
 

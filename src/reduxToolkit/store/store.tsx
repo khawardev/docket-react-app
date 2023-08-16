@@ -1,11 +1,16 @@
-// src/redux/store.js
+
 import { configureStore } from '@reduxjs/toolkit';
-import dataReducer from '../dataSlice/Dataslice';
+import {NotesSlice} from '../dataSlice/Dataslice';
+import {FolderSlice} from '../dataSlice/Dataslice';
+
 
 const store = configureStore({
     reducer: {
-        NewNotes: dataReducer,
+        notesstore: NotesSlice,
+        foldersstore: FolderSlice,
     },
 });
+
+
 export type RootState = ReturnType<typeof store.getState>;
 export default store;

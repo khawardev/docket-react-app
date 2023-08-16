@@ -2,10 +2,9 @@
 
 import { FiFolder } from 'react-icons/fi';
 import React from 'react';
-import { useState, useEffect } from 'react';
-type folderprops = {
-    newFolderText: string;
-}
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../reduxToolkit/store/store';
+
 const DateCapture = () => {
     const currentDate = new Date();
     const date: Intl.DateTimeFormatOptions = {
@@ -20,21 +19,16 @@ const DateCapture = () => {
 };
 
 
-const NewFolder: React.FC<folderprops> = (props: folderprops) => {
+const NewFolder: React.FC = () => {
 
-    const data = props?.newFolderText;
-    const [folderData, setFolderData] = useState<string[]>([]);
-    useEffect(() => {
-        if (data.trim() !== '' && data.length <= 13) {
-            setFolderData((prevArray) => [...prevArray, data]);
-        }
-    }, [data]);
-
+    const folderData = useSelector((state: RootState) => state.foldersstore.NewFolderArray);
+    console.log("🚀 ~ file: FolderInterface.tsx:30 ~ folderData:", folderData)
 
 
     return (
         <>
             {folderData.length !== 0 &&
+
                 <div className=' select-none'>
                     <section className=" w-11/12 m-auto flex items-center mt-7">
                         <p className=" sm:text-4xl text-3xl font-extrabold ">Folders</p>
@@ -45,7 +39,7 @@ const NewFolder: React.FC<folderprops> = (props: folderprops) => {
                         {folderData.map((string, index) => (
                             <main key={index} className=' bg-slate-100 sm:p-5 p-4 rounded-2xl hover:cursor-pointer hover:bg-slate-200'>
                                 <div className=' flex items-center  justify-between  '>
-                                    <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>{string}</p>
+                                    <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>{string.newFolder}</p>
                                     <p className=' text-lg milestone-num font-bold'>0</p>
                                 </div>
                                 <div className='my-7  text-slate-600  sm:text-8xl text-6xl justify-center flex' >
