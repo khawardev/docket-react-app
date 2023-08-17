@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
-import { HiOutlineStar } from 'react-icons/hi';
 import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 import './newNotes.scss';
 // import  {useHistory}  from 'react';
@@ -135,10 +134,7 @@ const Newnotes: React.FC= () => {
                                 }
                             </button>
                         )}
-                        <button className='bg-slate-200 p-3 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300'>
-                            <HiOutlineStar />
-                        </button>
-
+                    
                     </section>
                 </section>
 
