@@ -4,7 +4,10 @@ import Navbar from './Components/navbar/Navbar';
 import Newnotes from './Components/newnotes/Newnotes';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
-const App: React.FC =()=> {
+import ReadNotes from './Components/readNotes/ReadNotes';
+
+
+const App: React.FC = () => {
 
   return (
     <>
@@ -14,7 +17,8 @@ const App: React.FC =()=> {
         <hr className='mt-5' />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="new-notes" element={<Newnotes />} />
+          <Route path={`new-notes/:id`} element={<Newnotes />} />
+          <Route path={`read-notes/:id`} element={<ReadNotes />} />
         </Routes>
       </Router>
     </>

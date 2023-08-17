@@ -1,9 +1,9 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 interface NewNotes {
-    title: string;
-    description: string;
+    id: string | undefined;
+    title: string | undefined;
+    description: string | undefined;
 }
 interface NotesState {
     NewNotesArray: NewNotes[];
@@ -18,10 +18,24 @@ const notesSlice = createSlice({
         addNotes: (state, action: PayloadAction<NewNotes>) => {
             state.NewNotesArray.unshift(action.payload);
         },
+        editNotes: (state, action: PayloadAction<NewNotes>) => {
+            const { id, title, description } = action.payload;
+            const updatedNotesArray = state.NewNotesArray.map(obj => {
+                if (obj.id === id) {
+                    return { ...obj, title, description };
+                }
+                return obj;
+            });
+
+            return {
+                ...state,
+                NewNotesArray: updatedNotesArray,
+            };
+        }
 
     },
 });
-export const { addNotes } = notesSlice.actions;
+export const { addNotes, editNotes } = notesSlice.actions;
 export const NotesSlice = notesSlice.reducer;
 
 
@@ -49,3 +63,30 @@ const folderSlice = createSlice({
 
 export const { addFolder } = folderSlice.actions;
 export const FolderSlice = folderSlice.reducer; 
+
+
+
+
+interface UpdateNotes {
+    id: string | undefined;
+    title: string | undefined;
+    description: string | undefined;
+}
+interface UpdateNotesState {
+    UpdateNotesArray: UpdateNotes[];
+}
+const initialUpdateNotesState: UpdateNotesState = {
+    UpdateNotesArray: [],
+};
+const updateNotesSlice = createSlice({
+    name: 'folders',
+    initialState: initialUpdateNotesState,
+    reducers: {
+        UpdateNotes: (state, action: PayloadAction<UpdateNotes>) => {
+            state.UpdateNotesArray.unshift(action.payload);
+        },
+    },
+});
+
+export const { UpdateNotes } = updateNotesSlice.actions;
+export const UpdateNotesSlice = updateNotesSlice.reducer; 
