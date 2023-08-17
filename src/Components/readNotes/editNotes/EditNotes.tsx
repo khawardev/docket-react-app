@@ -13,6 +13,13 @@ interface ReadnotesProps {
 
 const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
     const Navigate = useNavigate()
+
+    const navigateBack = () => {
+        Navigate(-1); // Navigate back to the previous route
+    };
+
+
+
     const NotesData = useSelector((state: RootState) =>
         state.notesstore.NewNotesArray.find((ReadnotesProps) => ReadnotesProps.id === Id)
     );
@@ -90,7 +97,7 @@ const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
                 <section className='flex items-center justify-between py-3 select-none' >
 
 
-                    <section className='flex justify-between items-center gap-3'>
+                    <section className='flex justify-between items-center gap-3' onClick={navigateBack}>
                         <div className='bg-slate-200 p-3 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300'>
                             <IoChevronBack />
                         </div>
@@ -130,7 +137,6 @@ const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
                     <input
                         className='w-full text-2xl font-bold outline-none border-none text-slate-700 mb-2'
                         type="text"
-                        autoFocus
                         placeholder='Title'
                         value={ReadTitle}
                         onChange={handleTitleChange}
