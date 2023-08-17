@@ -6,10 +6,7 @@ import './newNotes.scss';
 // import { useNavigate } from "react-router-dom";
 // import { useContext } from 'react';
 // import { Context } from '../../context/AppContext';
-// type Data = {
-//     title: string;
-//     description: string;
-// }
+
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reduxToolkit/store/store';
 import { useDispatch } from 'react-redux';
