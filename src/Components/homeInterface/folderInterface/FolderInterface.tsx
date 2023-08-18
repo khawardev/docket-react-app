@@ -18,7 +18,7 @@ const NewFolder: React.FC = () => {
                     </section>
                     <section className='w-11/12 m-auto mt-7 grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 sm:gap-4 gap-2 '>
                         {folderData.map((string, index) => (
-                            <FolderComponent key={index} newFolder={string.newFolder}  />
+                            <FolderComponent key={index} Folderid={string.Folderid}  Foldertitle={string.Foldertitle}  />
                         ))}
                     </section>
                 </div>

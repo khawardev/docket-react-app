@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { addFolder } from '../../../../reduxToolkit/dataSlice/Dataslice';
 import { useState, KeyboardEvent } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../reduxToolkit/store/store';
 interface ModalProps {
   handleModal: () => void;
   isModalOpen:boolean
@@ -8,10 +10,11 @@ interface ModalProps {
 const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
   const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();
+  const NotesLength = useSelector((state: RootState) => state.foldersstore.NewFolderArray.length);
 
   const EnterQueryHandler = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && query.length > 0 && query.length <= 13) {
-      const folderObject = { newFolder: event.currentTarget.value };
+      const folderObject = { Folderid: NotesLength.toString(), Foldertitle: event.currentTarget.value };
       dispatch(addFolder(folderObject))
       setQuery('');
       handleModal()
@@ -20,7 +23,7 @@ const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
   };
   const ClickQueryHandler = () => {
     if (query.length > 0 && query.length <= 13) {
-      const folderObject = { newFolder: query };
+      const folderObject = { Folderid: NotesLength.toString(), Foldertitle: query };
       dispatch(addFolder(folderObject))
       setQuery('');
       handleModal();

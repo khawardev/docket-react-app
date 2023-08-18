@@ -94,6 +94,11 @@ const Newnotes: React.FC= () => {
         return currentDate.toLocaleDateString(undefined, date);
     }
 
+    const navigate = useNavigate();
+
+    const navigateBack = () => {
+        navigate(-1); // Navigate back to the previous route
+    };
 
     return (
         <>
@@ -101,7 +106,7 @@ const Newnotes: React.FC= () => {
                 <section className='flex items-center justify-between py-3 select-none' >
 
 
-                    <section className='flex justify-between items-center gap-3'>
+                    <section className='flex justify-between items-center gap-3' onClick={navigateBack}>
                         <div className='bg-slate-200 p-3 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300'>
                             <IoChevronBack />
                         </div>

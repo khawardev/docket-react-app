@@ -43,7 +43,8 @@ export const NotesSlice = notesSlice.reducer;
 
 
 interface NewFolder {
-    newFolder: string
+    Foldertitle: string
+    Folderid: string | undefined
 }
 interface FolderState {
     NewFolderArray: NewFolder[];
