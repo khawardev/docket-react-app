@@ -55,6 +55,7 @@ interface NewNotesF {
 }
 
 interface NewFolder {
+    id: number;
     Folderid: string | undefined
     Foldertitle: string
     newnotes: NewNotesF[]; 

@@ -22,6 +22,7 @@ const App: React.FC = () => {
           <Route path={`read-notes/:id`} element={<ReadNotes />} />
           <Route path={`read-folder/:id`} element={<ReadFolder />} />
           <Route path={`read-folder/:readfolderId/new-notes/:newnotesId`} element={<NewFolderNotes />} />
+          {/* <Route path={`read-folder-notes/:id`} element={<NewFolderNotes />} /> */}
         </Routes>
       </Router>
     </>
