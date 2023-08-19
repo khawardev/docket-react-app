@@ -55,10 +55,10 @@ interface NewNotesF {
 }
 
 interface NewFolder {
+    Folderid: string;
+    Foldertitle: string;
     id: number;
-    Folderid: string | undefined
-    Foldertitle: string
-    newnotes: NewNotesF[]; 
+    newnotes: NewNotesF[];
 }
 interface FolderState {
     NewFolderArray: NewFolder[];
@@ -84,7 +84,7 @@ const folderSlice = createSlice({
             }
         },
     },
-  
+
 });
 
 export const { addFolder, addNewNoteToFolder } = folderSlice.actions;

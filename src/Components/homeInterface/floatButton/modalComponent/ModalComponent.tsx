@@ -7,6 +7,7 @@ interface ModalProps {
   handleModal: () => void;
   isModalOpen:boolean
 }
+
 const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
   const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
 
   const EnterQueryHandler = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && query.length > 0 && query.length <= 13) {
-      const folderObject = { Folderid: NotesLength.toString(), Foldertitle: event.currentTarget.value };
+      const folderObject = { Folderid: NotesLength.toString(), Foldertitle: event.currentTarget.value, id: 0, newnotes: [] };
       dispatch(addFolder(folderObject))
       setQuery('');
       handleModal()
@@ -23,7 +24,7 @@ const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
   };
   const ClickQueryHandler = () => {
     if (query.length > 0 && query.length <= 13) {
-      const folderObject = { Folderid: NotesLength.toString(), Foldertitle: query };
+      const folderObject = { Folderid: NotesLength.toString(), Foldertitle: query, id: 0, newnotes: [] };
       dispatch(addFolder(folderObject))
       setQuery('');
       handleModal();
