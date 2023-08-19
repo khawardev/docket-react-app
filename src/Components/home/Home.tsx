@@ -16,12 +16,12 @@ const Home: React.FC = () => {
 
 
 
-
+    const a = 0;
     return (
         <>
             <FolderInterface />
             <NotesInterface />
-            <FloatButton />
+            <FloatButton foldernewnotes={false} folderid={a.toString()} />
 
         </>
     )

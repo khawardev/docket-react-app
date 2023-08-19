@@ -42,9 +42,22 @@ export const NotesSlice = notesSlice.reducer;
 
 
 
+
+
+
+
+
+
+interface NewNotesF {
+    newnotesid: string | undefined;
+    title: string;
+    description: string;
+}
+
 interface NewFolder {
-    Foldertitle: string
     Folderid: string | undefined
+    Foldertitle: string
+    newnotes: NewNotesF[]; 
 }
 interface FolderState {
     NewFolderArray: NewFolder[];
@@ -57,37 +70,48 @@ const folderSlice = createSlice({
     initialState: initialFolderState,
     reducers: {
         addFolder: (state, action: PayloadAction<NewFolder>) => {
-            state.NewFolderArray.unshift(action.payload);
+            state.NewFolderArray.push(action.payload);
+        },
+        addNewNoteToFolder: (state, action: PayloadAction<{ folderid: string | undefined; newNote: NewNotesF }>) => {
+            const { folderid, newNote } = action.payload;
+            const folderIndex = state.NewFolderArray.findIndex(folder => folder.Folderid === folderid);
+            if (folderIndex !== -1) {
+                if (!state.NewFolderArray[folderIndex].newnotes) {
+                    state.NewFolderArray[folderIndex].newnotes = [];
+                }
+                state.NewFolderArray[folderIndex].newnotes.unshift(newNote);
+            }
         },
     },
+  
 });
 
-export const { addFolder } = folderSlice.actions;
-export const FolderSlice = folderSlice.reducer; 
+export const { addFolder, addNewNoteToFolder } = folderSlice.actions;
+export const FolderSlice = folderSlice.reducer;
 
 
 
-
-interface UpdateNotes {
-    id: string | undefined;
-    title: string | undefined;
-    description: string | undefined;
+interface NewNotesFolder {
+    newnotesid: string | undefined;
+    title: string;
+    description: string;
 }
-interface UpdateNotesState {
-    UpdateNotesArray: UpdateNotes[];
+
+interface NewNotesFState {
+    NewNotesFArray: NewNotesFolder[];
 }
-const initialUpdateNotesState: UpdateNotesState = {
-    UpdateNotesArray: [],
+const initialNewNotesFState: NewNotesFState = {
+    NewNotesFArray: [],
 };
-const updateNotesSlice = createSlice({
-    name: 'folders',
-    initialState: initialUpdateNotesState,
+const newnotesFArraySlice = createSlice({
+    name: 'foldersnewnotesArray',
+    initialState: initialNewNotesFState,
     reducers: {
-        UpdateNotes: (state, action: PayloadAction<UpdateNotes>) => {
-            state.UpdateNotesArray.unshift(action.payload);
+        addNewNoteArray: (state, action: PayloadAction<NewNotesFolder>) => {
+            state.NewNotesFArray.push(action.payload);
         },
-    },
+    }
 });
 
-export const { UpdateNotes } = updateNotesSlice.actions;
-export const UpdateNotesSlice = updateNotesSlice.reducer; 
+export const { addNewNoteArray } = newnotesFArraySlice.actions;
+export const NewnotesFArraySlice = newnotesFArraySlice.reducer;

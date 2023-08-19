@@ -2,9 +2,15 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reduxToolkit/store/store';
 import { IoChevronBack } from 'react-icons/io5';
-const ReadFolder = () => {
+import FloatButton from '../homeInterface/floatButton/FloatButton';
+import ReadnotesFolder from './readnotesFolder/ReadnotesFolder';
+
+const ReadFolder= () => {
   const { id } = useParams();
+  console.log("🚀 ~ file: ReadFolder.tsx:10 ~ ReadFolder ~ id:", id)
   const navigate = useNavigate();
+  const FolderNotesdata = useSelector((state: RootState) => state.foldersstore.NewFolderArray[id]?.newnotes);
+  console.log("🚀 ~ file: ReadFolder.tsx:10 ~ ReadFolder ~ FolderNotesLength:", FolderNotesdata)
 
   const navigateBack = () => {
     navigate(-1); // Navigate back to the previous route
@@ -13,16 +19,19 @@ const ReadFolder = () => {
     state.foldersstore.NewFolderArray.find(folder => folder.Folderid === id)
   );
   return (
-    <div className=' w-11/12 m-auto'>
-      <section className='flex justify-start items-center gap-3  my-7'>
-        <div className='bg-slate-200 p-3 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300' onClick={navigateBack}>
-          <IoChevronBack />
-        </div>
-        <h1 className=' text-3xl font-bold flex items-center'><span className=' bg-purple-400 rounded-full sm:px-5 px-3 sm:py-1 text-white  text-xl font-bold '>{folder?.Foldertitle}</span></h1>
-      </section>
+    <>
 
-    </div>
-
+      <div className=' w-11/12 m-auto'>
+        <section className='flex justify-start items-center gap-3  my-7'>
+          <div className='bg-slate-200 p-3 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300' onClick={navigateBack}>
+            <IoChevronBack />
+          </div>
+          <h1 className=' text-3xl font-bold flex items-center'><span className=' bg-purple-400 rounded-full sm:px-5 px-3 sm:py-1 text-white  text-xl font-bold '>{folder?.Foldertitle}</span></h1>
+        </section>
+      </div>
+      <ReadnotesFolder FolderNotesdata={FolderNotesdata} />
+      <FloatButton folderid={id ? id : ''} foldernewnotes={true} />
+    </>
 
   )
 }

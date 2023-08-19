@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react';
 import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineDelete } from 'react-icons/ai';
@@ -7,13 +8,17 @@ import { BiCheck, BiX } from 'react-icons/bi';
 import { useNavigate } from "react-router-dom";
 import { RootState } from '../../../../reduxToolkit/store/store';
 import { useSelector } from 'react-redux';
+
 interface MenuProps {
     handleModal: () => void;
+    foldernewnotes: boolean;
+    folderid: string|number;
 }
 
-const MenuComponent: React.FC<MenuProps> = ({ handleModal }) => {
+const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folderid }) => {
+   
+    const FolderNotesLength = useSelector((state: RootState) => state.foldersstore.NewFolderArray[+folderid]?.newnotes?.length);
     const NotesLength = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
-
 
     const Navigate = useNavigate();
     const [DeletemenuVisible, setDeletemenuVisible] = useState(false);
@@ -22,6 +27,10 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal }) => {
     const [textcolor, setTextcolor] = useState<string>('text-black');
 
 
+
+  
+
+    
 
     const toggleMenu = () => {
         setMenuVisible(!menuVisible)
@@ -44,14 +53,24 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal }) => {
             <div className='Float-Button'>
                 {menuVisible && (
                     <ul className="menu-list" >
-                        <li onClick={() => { toggleMenu(); handleModal(); }} className='flex items-center gap-3'>
-                            <span><FiFolder size={20} /></span>
-                            <p className='mt-1 '>Folder</p>
-                        </li>
-                        <li className='flex items-center gap-3' onClick={() => Navigate(`new-notes/${NotesLength}`)}>
-                            <span ><LuStickyNote size={20} /></span>
-                            <p className='mt-1 '>Notes</p>
-                        </li>
+                        {foldernewnotes ? (
+                            <li className='flex items-center gap-3' onClick={() => Navigate(`/read-folder/${folderid}/new-notes/${FolderNotesLength == undefined ? 0 : FolderNotesLength}`)}>
+                                <span ><LuStickyNote size={20} /></span>
+                                <p className='mt-1 '>Notes</p>
+                            </li>
+                        ) : (
+                            <>
+                                <li onClick={() => { toggleMenu(); handleModal(); }} className='flex items-center gap-3'>
+                                    <span><FiFolder size={20} /></span>
+                                    <p className='mt-1 '>Folder</p>
+                                </li>
+                                <li className='flex items-center gap-3' onClick={() => Navigate(`new-notes/${NotesLength}`)}>
+                                    <span ><LuStickyNote size={20} /></span>
+                                    <p className='mt-1 '>Notes</p>
+                                </li>
+                            </>
+                        )}
+
                     </ul>
                 )}
                 {DeletemenuVisible ? (

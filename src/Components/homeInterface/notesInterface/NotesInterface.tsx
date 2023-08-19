@@ -1,14 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './notesInterface.scss';
-import React from 'react';
 import NoteComponent from './noteComponent/NoteComponent';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../reduxToolkit/store/store';
-
-const NotesInterface: React.FC = () => {
-
+const NotesInterface = () => {
     const NotesData = useSelector((state: RootState) => state.notesstore.NewNotesArray);
-
 
 
     return (
@@ -27,7 +23,6 @@ const NotesInterface: React.FC = () => {
                     </div>
                 </>
             )}
-
         </>
 
     );

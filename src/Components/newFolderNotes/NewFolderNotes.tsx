@@ -1,23 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
 import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
-import './newNotes.scss';
-// import  {useHistory}  from 'react';
-// import { useNavigate } from "react-router-dom";
-// import { useContext } from 'react';
-// import { Context } from '../../context/AppContext';
-
-import { useSelector } from 'react-redux';
-import { RootState } from '../../reduxToolkit/store/store';
+// import { useSelector } from 'react-redux';
+// import { RootState } from '../../reduxToolkit/store/store';
 import { useDispatch } from 'react-redux';
-import { addNotes } from '../../reduxToolkit/dataSlice/Dataslice';
-import { useNavigate } from 'react-router-dom';
+import { addNewNoteToFolder } from '../../reduxToolkit/dataSlice/Dataslice';
+import { useNavigate, useParams } from 'react-router-dom';
+interface NewNotes {
+    newnotesid: string | undefined;
+    title: string;
+    description: string;
+}
 
 
-
-const Newnotes: React.FC= () => {
+const NewFolderNotes: React.FC = () => {
     const Navigate = useNavigate()
-
+    const { readfolderId, newnotesId } = useParams();
 
     const [Title, setTitle] = useState<string>('');
     const [Description, setDescription] = useState<string>('');
@@ -25,26 +22,26 @@ const Newnotes: React.FC= () => {
     const [savedtext, setSavedText] = useState(false)
     const [isSaving, setIsSaving] = useState(false);
     const dispatch = useDispatch();
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    // useEffect(() => {
-    //     { Title === '' && Description === '' && setNotesOjectData({ title: '', description: '' }) }
-    // }, [Title, Description === ''])
-    // const context = useContext(Context)
-    // if (!context) {
-    //     return 'null'; 
-    // }
-    // const {setNotesOjectData } = context;
-    // const handleAddData = () => {
-    //     const newData = { title, description };
-    //     dispatch(addData(newData));
-    // };
+   
 
-    const NotesLength = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
+    // const NotesLength = useSelector((state: RootState) => state.newnotesfolderstore.folders.length);
     const handleButtonClick = () => {
-        dispatch(addNotes({ id: NotesLength.toString(), title: Title, description: Description }));
+
+        const newNote: NewNotes = {
+            newnotesid: newnotesId,
+            title: Title,
+            description: Description,
+        };
+
+        dispatch(addNewNoteToFolder({ folderid: readfolderId, newNote }));
+        // dispatch(addNotes({ id: NotesLength.toString(), title: Title, description: Description }));
+        
+        
         setIsSaving(true);
         setTimeout(() => {
             setIsSaving(false);
@@ -103,8 +100,6 @@ const Newnotes: React.FC= () => {
         <>
             <div className="w-11/12 m-auto">
                 <section className='flex items-center justify-between py-3 select-none' >
-
-
                     <section className='flex justify-between items-center gap-3' onClick={navigateBack}>
                         <div className='bg-slate-200 p-3 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300'>
                             <IoChevronBack />
@@ -135,7 +130,7 @@ const Newnotes: React.FC= () => {
                                 }
                             </button>
                         )}
-                    
+
                     </section>
                 </section>
 
@@ -167,4 +162,4 @@ const Newnotes: React.FC= () => {
     )
 }
 
-export default Newnotes
+export default NewFolderNotes;
