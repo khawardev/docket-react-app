@@ -17,7 +17,7 @@ interface FolderNotesdataQ {
 const ReadnotesFolder: React.FC<FolderNotesdataQ> = ({ FolderNotesdata }) => {
     return (
         <>
-            {FolderNotesdata?.length !== undefined &&
+            {FolderNotesdata?.length !== 0 &&
                 <>
                     <div className='select-none my-7'>
                         <section className="w-11/12 m-auto flex items-center my-7 ">
