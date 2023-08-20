@@ -31,7 +31,7 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
     const FolderNotesobject = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
     useEffect(() => {
         if (FolderNotesobject === 0) {
-            setDeletemenuVisible(!DeletemenuVisible)
+            setDeletemenuVisible(false)
         }
     }, [FolderNotesobject])
     const context = useContext(Context)
