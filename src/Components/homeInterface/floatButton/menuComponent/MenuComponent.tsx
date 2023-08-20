@@ -4,10 +4,12 @@ import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { FiFolder } from 'react-icons/fi';
 import { LuStickyNote } from 'react-icons/lu';
-import { BiCheck, BiX } from 'react-icons/bi';
+import { BiX } from 'react-icons/bi';
 import { useNavigate } from "react-router-dom";
 import { RootState } from '../../../../reduxToolkit/store/store';
 import { useSelector } from 'react-redux';
+import { useContext, useEffect } from 'react';
+import { Context } from '../../../../context/AppContext';
 
 interface MenuProps {
     handleModal: () => void;
@@ -26,6 +28,17 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
     const [bgcolor, setBgcolor] = useState<string>('bg-purple-400');
     const [textcolor, setTextcolor] = useState<string>('text-black');
 
+    const FolderNotesobject = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
+    useEffect(() => {
+        if (FolderNotesobject === 0) {
+            setDeletemenuVisible(!DeletemenuVisible)
+        }
+    }, [FolderNotesobject])
+    const context = useContext(Context)
+    if (!context) {
+        return 'null';
+    }
+    const { DeletecheckMark, setDeletecheckMark } = context || {};
 
 
   
@@ -46,6 +59,8 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
         { menuVisible && setMenuVisible(!menuVisible) } // DELETE BUTTON : If ADD menu open then it close it
         { menuVisible && setBgcolor('bg-purple-400'), setTextcolor('text-black') } // DELETE BUTTON : If Color of ADD button is visible the normal it
         setDeletemenuVisible(!DeletemenuVisible)
+
+        setDeletecheckMark(!DeletecheckMark);
     };
 
     return (
@@ -75,8 +90,8 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
                 )}
                 {DeletemenuVisible ? (
                     <>
-                        <button className={`left-button bg-purple-400`} onClick={DeleteMenu}><BiX size={22} /></button>
-                        <button className={`right-button bg-purple-400 `} ><BiCheck size={22} /></button>
+                        <button className={` rounded-full px-[3.2rem] hover:text-white py-3 bg-purple-400 hover:bg-purple-500`} onClick={DeleteMenu}><BiX size={22} /></button>
+                        {/* <button className={`right-button bg-purple-400 `} ><BiCheck size={22} /></button> */}
                     </>
                 ) :
                     <>

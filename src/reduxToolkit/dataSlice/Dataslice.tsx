@@ -5,12 +5,14 @@ interface NewNotes {
     title: string | undefined;
     description: string | undefined;
 }
+
 interface NotesState {
     NewNotesArray: NewNotes[];
 }
 const initialNotesState: NotesState = {
     NewNotesArray: [],
 };
+
 const notesSlice = createSlice({
     name: 'notes',
     initialState: initialNotesState,
@@ -31,11 +33,19 @@ const notesSlice = createSlice({
                 ...state,
                 NewNotesArray: updatedNotesArray,
             };
-        }
+        },
+        deleteNotes: (state, action: PayloadAction<string>) => {
+            const noteIdToDelete = action.payload;
+            const updatedNotesArray = state.NewNotesArray.filter(obj => obj.id !== noteIdToDelete);
 
+            return {
+                ...state,
+                NewNotesArray: updatedNotesArray,
+            };
+        },
     },
 });
-export const { addNotes, editNotes } = notesSlice.actions;
+export const { addNotes, editNotes, deleteNotes } = notesSlice.actions;
 export const NotesSlice = notesSlice.reducer;
 
 
@@ -105,27 +115,28 @@ export const FolderSlice = folderSlice.reducer;
 
 
 
-interface NewNotesFolder {
-    newnotesid: string | undefined;
-    title: string;
-    description: string;
-}
 
-interface NewNotesFState {
-    NewNotesFArray: NewNotesFolder[];
+
+
+interface notesIdsData {
+    notesIds?: number;
 }
-const initialNewNotesFState: NewNotesFState = {
-    NewNotesFArray: [],
+interface notesIdsArray {
+    notesIdsArray: notesIdsData[]
+}
+const initialNewNotesFState: notesIdsArray = {
+    notesIdsArray: [],
 };
-const newnotesFArraySlice = createSlice({
+const addNewNoteArraySlice = createSlice({
     name: 'foldersnewnotesArray',
     initialState: initialNewNotesFState,
     reducers: {
-        addNewNoteArray: (state, action: PayloadAction<NewNotesFolder>) => {
-            state.NewNotesFArray.push(action.payload);
+        addNewNoteArray: (state, action: PayloadAction<notesIdsData>) => {
+            state.notesIdsArray.push(action.payload);
         },
+       
     }
 });
 
-export const { addNewNoteArray } = newnotesFArraySlice.actions;
-export const NewnotesFArraySlice = newnotesFArraySlice.reducer;
+export const { addNewNoteArray } = addNewNoteArraySlice.actions;
+export const AddNewNoteArraySlice = addNewNoteArraySlice.reducer;

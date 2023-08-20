@@ -2,16 +2,13 @@ import { useState} from 'react';
 import React from 'react';
 import MenuComponent from './menuComponent/MenuComponent';
 import ModalCompoent from './modalComponent/ModalComponent';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../reduxToolkit/store/store';
+
 interface Foldernewnotesprops {
     foldernewnotes: boolean;
     folderid: string;
 }
 const FloatButton: React.FC<Foldernewnotesprops> = ({ foldernewnotes, folderid }) => {
-    const FolderNotesobject = useSelector((state: RootState) => state.foldersstore.NewFolderArray[+folderid]?.newnotes);
-    console.log("🚀 ~ file: MenuComponent.tsx:31 ~ FolderNotesobject:", FolderNotesobject)
-
+  
 
 
 

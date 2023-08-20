@@ -1,6 +1,8 @@
 
 import { FiFolder } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../reduxToolkit/store/store';
 // import { useSelector } from 'react-redux';
 // import { RootState } from '../../../../reduxToolkit/store/store';
 interface Folderprop {
@@ -23,12 +25,14 @@ const FolderComponent: React.FC<Folderprop> = ({ Foldertitle, Folderid }) => {
     };
     // const NotesLength = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
     // onClick = {() => Navigate(`read-folder/${NotesLength}`)}
+    const NewnotesArray = useSelector((state: RootState) => state.foldersstore.NewFolderArray[Folderid === undefined ? '0' : +Folderid]?.newnotes);
+
   return (
     <>
           <main className=' bg-slate-100 sm:p-5 p-4 rounded-2xl hover:cursor-pointer hover:bg-slate-200' onClick={() => Navigate(`read-folder/${Folderid}`)}>
               <div className=' flex items-center  justify-between  '>
                   <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>{Foldertitle}</p>
-                  <p className=' text-lg milestone-num font-bold'>0</p>
+                  <p className=' text-lg milestone-num font-bold'>{NewnotesArray.length}</p>
               </div>
               <div className='my-7  text-slate-600  sm:text-8xl text-6xl justify-center flex' >
                   <span ><FiFolder /></span>

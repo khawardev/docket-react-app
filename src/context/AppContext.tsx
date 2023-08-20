@@ -9,12 +9,11 @@ interface NoteArraydata {
     description: string;
 }
 interface ContextType {
-    newFolderText: string;
-    setNewFolderText: React.Dispatch<React.SetStateAction<string>>;
-    NotesOjectdata: NotesData;
-    setNotesOjectData: React.Dispatch<React.SetStateAction<NotesData>>;
-    notes: NoteArraydata[];
-    setNotes: React.Dispatch<React.SetStateAction<NoteArraydata[]>>;
+    newFolderText: string; setNewFolderText: React.Dispatch<React.SetStateAction<string>>;
+    NotesOjectdata: NotesData; setNotesOjectData: React.Dispatch<React.SetStateAction<NotesData>>;
+    notes: NoteArraydata[]; setNotes: React.Dispatch<React.SetStateAction<NoteArraydata[]>>;
+    DeletecheckMark: boolean, setDeletecheckMark: React.Dispatch<React.SetStateAction<boolean>>;
+    deletenotesid: number | undefined, setdeletenotesid: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
 interface AppContextProps {
@@ -32,6 +31,19 @@ const AppContext = ({ children }: AppContextProps) => {
         description: '',
     });
     const [notes, setNotes] = useState<NoteArraydata[]>([]);
+    const [DeletecheckMark, setDeletecheckMark] = useState<boolean>(false);
+    const [deletenotesid, setdeletenotesid] = useState<number|undefined>();
+
+
+
+
+
+
+
+
+
+
+
     const contextValue: ContextType = {
         newFolderText,
         setNewFolderText,
@@ -39,6 +51,8 @@ const AppContext = ({ children }: AppContextProps) => {
         setNotesOjectData,
         notes,
         setNotes,
+        DeletecheckMark, setDeletecheckMark,
+        deletenotesid, setdeletenotesid
     };
     return (
         <Context.Provider
