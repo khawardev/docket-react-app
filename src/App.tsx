@@ -7,7 +7,7 @@ import React from 'react';
 import ReadNotes from './Components/readNotes/ReadNotes';
 import ReadFolder from './Components/readFolder/ReadFolder';
 import NewFolderNotes from './Components/newFolderNotes/NewFolderNotes';
-
+import EditNotesFolder from './Components/readnotesFolder/editNotesFolder/EditnotesFolder';
 const App: React.FC = () => {
 
   return (
@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <Route path={`read-notes/:id`} element={<ReadNotes />} />
           <Route path={`read-folder/:id`} element={<ReadFolder />} />
           <Route path={`read-folder/:readfolderId/new-notes/:newnotesId`} element={<NewFolderNotes />} />
-          {/* <Route path={`read-folder-notes/:id`} element={<NewFolderNotes />} /> */}
+          <Route path={`/read-folder/:folderid/notes/:newnotesid`} element={<EditNotesFolder />} />
         </Routes>
       </Router>
     </>

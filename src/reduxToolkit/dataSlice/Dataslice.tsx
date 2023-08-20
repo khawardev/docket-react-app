@@ -50,8 +50,8 @@ export const NotesSlice = notesSlice.reducer;
 
 interface NewNotesF {
     newnotesid: string | undefined;
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
 }
 
 interface NewFolder {
@@ -83,11 +83,24 @@ const folderSlice = createSlice({
                 state.NewFolderArray[folderIndex].newnotes.unshift(newNote);
             }
         },
+        editNewNoteToFolder: (state, action: PayloadAction<{ folderid: string | undefined; newNote: NewNotesF }>) => {
+            const { folderid, newNote } = action.payload;
+            const folderIndex = state.NewFolderArray.findIndex(folder => folder.Folderid === folderid);
+            if (folderIndex !== -1) {
+                const selectedFolder = state.NewFolderArray[folderIndex];
+                selectedFolder.newnotes = selectedFolder.newnotes.map(note => {
+                    if (note.newnotesid === newNote.newnotesid) {
+                        return { ...note, ...newNote };
+                    }
+                    return note;
+                });
+            }
+        }
     },
 
 });
 
-export const { addFolder, addNewNoteToFolder } = folderSlice.actions;
+export const { addFolder, addNewNoteToFolder, editNewNoteToFolder } = folderSlice.actions;
 export const FolderSlice = folderSlice.reducer;
 
 

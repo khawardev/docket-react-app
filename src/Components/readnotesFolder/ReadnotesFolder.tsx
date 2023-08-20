@@ -5,8 +5,8 @@ import NoteComponent from '../homeInterface/notesInterface/noteComponent/NoteCom
 
 interface NewNotesF {
     newnotesid: string | undefined;
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
 }
 
 
@@ -14,7 +14,10 @@ interface FolderNotesdataQ {
     FolderNotesdata: NewNotesF[];
 }
 
-const ReadnotesFolder: React.FC<FolderNotesdataQ> = ({ FolderNotesdata }) => {
+interface FolderId {
+    folderid ?: string;
+}
+const ReadnotesFolder: React.FC<FolderNotesdataQ & FolderId> = ({ FolderNotesdata, folderid }) => {
     return (
         <>
             {FolderNotesdata?.length !== 0 &&
@@ -25,7 +28,7 @@ const ReadnotesFolder: React.FC<FolderNotesdataQ> = ({ FolderNotesdata }) => {
                         </section>
                         <section className='w-11/12 m-auto mt-7 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-1 sm:gap-4 gap-2'>
                             {FolderNotesdata?.map((note, index) => (
-                                <NoteComponent key={index} id={note.newnotesid} title={note.title} description={note.description} />
+                                <NoteComponent folderid={folderid} key={index} newnotesid={note.newnotesid} title={note.title} description={note.description} />
                             ))}
                         </section>
                     </div>

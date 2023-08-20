@@ -8,11 +8,13 @@ import ReadnotesFolder from '../readnotesFolder/ReadnotesFolder';
 const ReadFolder = () => {
   const { id } = useParams();
   
-  const FolderNotesdata = useSelector((state: RootState) => state.foldersstore.NewFolderArray[id === undefined ? '0' : +id]?.newnotes);
   const navigate = useNavigate();
   const navigateBack = () => {
     navigate(-1);
   };
+
+  
+  const FolderNotesdata = useSelector((state: RootState) => state.foldersstore.NewFolderArray[id === undefined ? '0' : +id]?.newnotes);
   const folder = useSelector((state: RootState) =>
     state.foldersstore.NewFolderArray.find(folder => folder.Folderid === id)
   );
@@ -26,7 +28,7 @@ const ReadFolder = () => {
           <h1 className=' text-3xl font-bold flex items-center'><span className=' bg-purple-400 rounded-full sm:px-5 px-3 sm:py-1 text-white  text-xl font-bold '>{folder?.Foldertitle}</span></h1>
         </section>
       </div>
-      <ReadnotesFolder FolderNotesdata={FolderNotesdata} />
+      <ReadnotesFolder FolderNotesdata={FolderNotesdata} folderid={id} />
       <FloatButton folderid={id ? id : ''} foldernewnotes={true} />
     </>
 

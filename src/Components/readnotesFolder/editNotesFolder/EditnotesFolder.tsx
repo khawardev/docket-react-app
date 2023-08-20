@@ -1,45 +1,55 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
-import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { RootState } from '../../../reduxToolkit/store/store';
+import { editNewNoteToFolder } from '../../../reduxToolkit/dataSlice/Dataslice';
+import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
+import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
-import { editNotes } from '../../../reduxToolkit/dataSlice/Dataslice';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface ReadnotesProps {
-    Id: string | undefined;
+    Id?: string;
 }
+interface Note {
+    newnotesid?: string;
+    title?: string;
+    description?: string;
+}
+const EditNotesFolder: React.FC<ReadnotesProps> = () => {
 
-const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
+    const { folderid, newnotesid } = useParams();
+    const NewnotesArray = useSelector((state: RootState) => state.foldersstore.NewFolderArray[folderid === undefined ? '0' : +folderid]?.newnotes);
+    const selectedNote = NewnotesArray?.find((note: Note) => note.newnotesid === newnotesid);
     const Navigate = useNavigate()
-
     const navigateBack = () => {
-        Navigate(-1); // Navigate back to the previous route
+        Navigate(-1);
     };
-
-
-
-    const NotesData = useSelector((state: RootState) =>
-        state.notesstore.NewNotesArray.find((ReadnotesProps) => ReadnotesProps.id === Id)
-    );
-
-    const [ReadTitle, setReadTitle] = useState<string | undefined>(NotesData?.title);
-    const [ReadDescription, setReadDescription] = useState<string | undefined>(NotesData?.description);
-    const [IsUpdatebutton, setIsUpdatebutton] = useState(false); // State to track typing status
-    const [Updatedtext, setUpdatedText] = useState(false)
-    const [isSaving, setIsSaving] = useState(false);
-    const dispatch = useDispatch();
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
 
 
+
+    const [ReadTitle, setReadTitle] = useState<string | undefined>(selectedNote?.title);
+    const [ReadDescription, setReadDescription] = useState<string | undefined>(selectedNote?.description);
+    const [IsUpdatebutton, setIsUpdatebutton] = useState(false); // State to track typing status
+    const [Updatedtext, setUpdatedText] = useState(false)
+    const [isSaving, setIsSaving] = useState(false);
+    const dispatch = useDispatch();
+
+
     // const NotesLength = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
     const handleButtonClick = () => {
-        dispatch(editNotes({ id: Id, title: ReadTitle, description: ReadDescription }));
+        dispatch(editNewNoteToFolder({
+            folderid,
+            newNote: {
+                newnotesid: newnotesid,
+                title: ReadTitle,
+                description: ReadDescription,
+            },
+        }));
+        // dispatch(editNewNoteToFolder({ folderid: 'your-folder-id', newNote }));
         setIsSaving(true);
         setTimeout(() => {
             setIsSaving(false);
@@ -49,7 +59,7 @@ const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
         }, 1800);
         setUpdatedText(false)
         setTimeout(() => {
-            Navigate('/')
+            Navigate(-1)
         }, 2200);
 
     };
@@ -68,7 +78,6 @@ const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
 
 
     const handleDescriptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-
         { ReadDescription ? setReadDescription(event.target.value) : setReadDescription(event.target.value); }
         { ReadDescription !== '' ? setIsUpdatebutton(true) : setIsUpdatebutton(false) }
         setUpdatedText(true);
@@ -159,4 +168,4 @@ const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
     )
 }
 
-export default EditNotes
+export default EditNotesFolder
