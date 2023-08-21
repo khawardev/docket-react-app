@@ -14,6 +14,7 @@ interface ContextType {
     notes: NoteArraydata[]; setNotes: React.Dispatch<React.SetStateAction<NoteArraydata[]>>;
     DeletecheckMark: boolean, setDeletecheckMark: React.Dispatch<React.SetStateAction<boolean>>;
     deletenotesid: number | undefined, setdeletenotesid: React.Dispatch<React.SetStateAction<number | undefined>>;
+    text: string, setText: React.Dispatch<React.SetStateAction<string>>;
 }
 
 interface AppContextProps {
@@ -33,6 +34,7 @@ const AppContext = ({ children }: AppContextProps) => {
     const [notes, setNotes] = useState<NoteArraydata[]>([]);
     const [DeletecheckMark, setDeletecheckMark] = useState<boolean>(false);
     const [deletenotesid, setdeletenotesid] = useState<number|undefined>();
+    const [text, setText] = useState('');
 
 
 
@@ -52,7 +54,8 @@ const AppContext = ({ children }: AppContextProps) => {
         notes,
         setNotes,
         DeletecheckMark, setDeletecheckMark,
-        deletenotesid, setdeletenotesid
+        deletenotesid, setdeletenotesid,
+        text, setText
     };
     return (
         <Context.Provider

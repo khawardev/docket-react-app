@@ -1,29 +1,31 @@
 import { useParams } from "react-router-dom"
 import { useDispatch } from 'react-redux';
-import { searchNotes } from '../../../reduxToolkit/dataSlice/Dataslice';
+import { searchNotes, clearFilteredNotes } from '../../../reduxToolkit/dataSlice/Dataslice';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
-
-// interface Note {
-//     id: string | undefined;
-//     title?: string;
-//     description: string | undefined;
-// }
+import { useContext } from 'react';
+import { Context } from '../../../context/AppContext';
 import { RootState } from '../../../reduxToolkit/store/store';
 import { useSelector } from 'react-redux';
 import NotesInterface from "../../homeInterface/notesInterface/NotesInterface";
 // import { clearFilteredNotes } from '../../../reduxToolkit/dataSlice/Dataslice';
 
 const SeacrhQuery = () => {
+    const context = useContext(Context)
+    const {setText} = context || {};
     const Navigate = useNavigate()
     const dispatch = useDispatch();
     const { query } = useParams()
+
     dispatch(searchNotes(query ? query : ''));
     const filteredNotesArray = useSelector((state: RootState) => state.notesstore.filteredNotesArray);
     const navigateBack = () => {
-        Navigate(-1); // Navigate back to the previous route
-        // dispatch(clearFilteredNotes());
-        // dispatch(searchNotes(''));
+        if (setText) {
+            setText('')
+        }
+        dispatch(clearFilteredNotes());
+        Navigate('/');
+       
     };
 
     return (
@@ -48,7 +50,7 @@ const SeacrhQuery = () => {
 
 
         </>
-    )
+    ) 
 }
 
 export default SeacrhQuery

@@ -29,8 +29,7 @@ const FloatButton: React.FC<Foldernewnotesprops> = ({ foldernewnotes, folderid }
 
 export default FloatButton
 
-// import { useContext } from 'react';
-// import { Context } from '../../../context/AppContext';
+
 // const [ispopup, setIspopup] = useState(false);
 {/* {ispopup && (
     <div className={`animated-text ${ispopup ? ' visible' : ''}`}>
