@@ -25,10 +25,12 @@ const Navbar: React.FC = () => {
     }, [text])
     const searchQueryHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter' && query.length > 0) {
+            
             if (!text && setText) {
                 setText(event.currentTarget.value);
                 setQuery('');
                 inputRef.current?.blur();
+                setSearchVisible(!searchVisible);
             }
         }
     };
