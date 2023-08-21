@@ -8,6 +8,7 @@ import ReadNotes from './Components/readNotes/ReadNotes';
 import ReadFolder from './Components/readFolder/ReadFolder';
 import NewFolderNotes from './Components/newFolderNotes/NewFolderNotes';
 import EditNotesFolder from './Components/readnotesFolder/editNotesFolder/EditnotesFolder';
+import SeacrhQuery from './Components/navbar/seacrhQuery/SeacrhQuery';
 const App: React.FC = () => {
 
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <hr className='mt-5' />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path={`search-notes/:query`} element={<SeacrhQuery />} />
           <Route path={`new-notes/:id`} element={<Newnotes />} />
           <Route path={`read-notes/:id`} element={<ReadNotes />} />
           <Route path={`read-folder/:id`} element={<ReadFolder />} />

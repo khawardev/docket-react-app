@@ -8,11 +8,13 @@ interface NewNotes {
 
 interface NotesState {
     NewNotesArray: NewNotes[];
+    filteredNotesArray: NewNotes[];
 }
+
 const initialNotesState: NotesState = {
     NewNotesArray: [],
+    filteredNotesArray: [],
 };
-
 const notesSlice = createSlice({
     name: 'notes',
     initialState: initialNotesState,
@@ -39,13 +41,30 @@ const notesSlice = createSlice({
             const updatedNotesArray = state.NewNotesArray.filter(obj => obj.id !== noteIdToDelete);
 
             return {
-                ...state,
+                ...state ,
                 NewNotesArray: updatedNotesArray,
+            };
+        },
+        searchNotes: (state, action: PayloadAction<string>) => {
+            const searchTerm = action.payload.toLowerCase();
+            const filteredNotesArray = state.NewNotesArray.filter(obj =>
+                obj.title && obj.title.toLowerCase().includes(searchTerm)
+            );
+
+            return {
+                ...state,
+                filteredNotesArray,
+            };
+        },
+        clearFilteredNotes: (state) => {
+            return {
+                ...state,
+                filteredNotesArray: [],
             };
         },
     },
 });
-export const { addNotes, editNotes, deleteNotes } = notesSlice.actions;
+export const { addNotes, editNotes, deleteNotes, searchNotes, clearFilteredNotes } = notesSlice.actions;
 export const NotesSlice = notesSlice.reducer;
 
 

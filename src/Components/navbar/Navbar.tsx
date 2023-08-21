@@ -1,10 +1,11 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import './navbar.scss';
 import { useState, useRef, KeyboardEvent } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { FaRegNoteSticky, FaMoon } from 'react-icons/fa6';
-import { BsSun } from 'react-icons/bs';
-import { IoPersonOutline } from 'react-icons/io5';
+import { FaRegNoteSticky } from 'react-icons/fa6';
+// import { BsSun } from 'react-icons/bs';
+// import { IoPersonOutline } from 'react-icons/io5';
 import { BiX } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 const Navbar: React.FC = () => {
@@ -13,18 +14,24 @@ const Navbar: React.FC = () => {
 
     const inputRef = useRef<HTMLInputElement | null>(null);                  // REF Hook: Disapear cursor after Enter 
     const [text, setText] = useState<string>('');                            // useState Hook: Storing Text after Enter 
-    console.log("🚀 ~ file: Navbar.tsx:16 ~ text:", text)
     const [query, setQuery] = useState<string>('');                          // useState Hook: Storing Text Length
-    const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);        // useState Hook: Set dark and Light mode
+    // const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);        // useState Hook: Set dark and Light mode
     // console.log(text)
-
+    useEffect(() => {
+        if (text) {
+            Navigate(`search-notes/${text}`)
+        }
+    }, [text])
     const searchQueryHandler = (event: KeyboardEvent<HTMLInputElement>) =>   // FUNCTION: Query Handler
     {
         if (event.key === 'Enter' && query.length > 0) {
             setText(event.currentTarget.value);
             setQuery('');
             inputRef.current?.blur();
+           
         }
+       
+
     };
 
     const [searchVisible, setSearchVisible] = useState(false);                // FUNCTION: Show Search Field at click in mobile screen
@@ -39,14 +46,14 @@ const Navbar: React.FC = () => {
 
 
 
-    function togglemode() {
-        setIsMoonIconVisible((prevIsMoonIconVisible) => !prevIsMoonIconVisible);
-        //     console.log("toggleIcon");
-        //     setTheme(theme === "Dark_mode" ? "Light_mode" : "Dark_mode");
-        //     setLogocolor(logocolor === '#ffffff' ? '#000000' : '#ffffff')
-        //     setbaseColor(baseColor === '#202020' ? 'rgb(200, 200, 200)' : '#202020')
-        //     sethighlightColor(highlightColor === '#444' ? 'rgb(225, 225, 225)' : '#444')
-    }
+    // function togglemode() {
+    //     setIsMoonIconVisible((prevIsMoonIconVisible) => !prevIsMoonIconVisible);
+    //     //     console.log("toggleIcon");
+    //     //     setTheme(theme === "Dark_mode" ? "Light_mode" : "Dark_mode");
+    //     //     setLogocolor(logocolor === '#ffffff' ? '#000000' : '#ffffff')
+    //     //     setbaseColor(baseColor === '#202020' ? 'rgb(200, 200, 200)' : '#202020')
+    //     //     sethighlightColor(highlightColor === '#444' ? 'rgb(225, 225, 225)' : '#444')
+    // }
 
     return (
         <>
@@ -105,7 +112,7 @@ const Navbar: React.FC = () => {
                             )}
                         </div>
                     </div>
-                    <div className="gap-2 flex ">
+                    {/* <div className="gap-2 flex ">
                         <button className='flex  items-center justify-center p-3 rounded-full toggle-button' onClick={togglemode} >
                             {isMoonIconVisible ? (
                                 <BsSun size={22} />
@@ -117,7 +124,7 @@ const Navbar: React.FC = () => {
                         <div>
                             <button className='flex  items-center justify-center p-3 rounded-full toggle-button'><IoPersonOutline size={22} /></button>
                         </div>
-                    </div>
+                    </div> */}
                 </main>
             </section>
 

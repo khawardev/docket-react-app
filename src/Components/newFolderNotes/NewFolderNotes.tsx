@@ -1,4 +1,5 @@
-import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
+import { IoChevronBack } from 'react-icons/io5';
+import { GoCheckCircle } from 'react-icons/go';
 import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 // import { useSelector } from 'react-redux';
 // import { RootState } from '../../reduxToolkit/store/store';
@@ -123,7 +124,7 @@ const NewFolderNotes: React.FC = () => {
                                     <>
                                         {savedtext ? `save` :
                                             <div className='flex items-center justify-center gap-2 '>
-                                                <IoCheckmarkCircleSharp size={19} /> Saved
+                                                <GoCheckCircle size={19} /> Saved
                                             </div>
                                         }
                                     </>

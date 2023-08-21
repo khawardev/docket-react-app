@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { IoChevronBack, IoCheckmarkCircleSharp } from 'react-icons/io5';
+import { IoChevronBack } from 'react-icons/io5';
+import { BiCheckCircle } from 'react-icons/bi';
 import { ChangeEvent, useState, KeyboardEvent, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../reduxToolkit/store/store';
@@ -121,7 +122,7 @@ const EditNotes: React.FC<ReadnotesProps> = ({ Id }) => {
 
                                         {Updatedtext ? `update` :
                                             <div className='flex items-center justify-center gap-2 '>
-                                                <IoCheckmarkCircleSharp size={19} /> Updated
+                                                <BiCheckCircle size={19} /> Updated
                                             </div>
                                         }
 
