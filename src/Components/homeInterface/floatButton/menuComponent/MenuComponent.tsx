@@ -4,7 +4,6 @@ import { RiAddFill } from 'react-icons/ri';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { FiFolder } from 'react-icons/fi';
 import { LuStickyNote } from 'react-icons/lu';
-import { BiX } from 'react-icons/bi';
 import { useNavigate } from "react-router-dom";
 import { RootState } from '../../../../reduxToolkit/store/store';
 import { useSelector } from 'react-redux';
@@ -14,11 +13,11 @@ import { Context } from '../../../../context/AppContext';
 interface MenuProps {
     handleModal: () => void;
     foldernewnotes: boolean;
-    folderid: string|number;
+    folderid: string | number;
 }
 
 const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folderid }) => {
-   
+
     const FolderNotesLength = useSelector((state: RootState) => state.foldersstore.NewFolderArray[+folderid]?.newnotes?.length);
     const NotesLength = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
 
@@ -38,12 +37,12 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
     if (!context) {
         return 'null';
     }
-    const { DeletecheckMark, setDeletecheckMark } = context || {};
+    const { DeletecheckMark,  setDeletecheckMark } = context || {};
 
 
-  
 
-    
+
+
 
     const toggleMenu = () => {
         setMenuVisible(!menuVisible)
@@ -61,8 +60,9 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
         setDeletemenuVisible(!DeletemenuVisible)
 
         setDeletecheckMark(!DeletecheckMark);
-    };
 
+    };
+   
     return (
         <div className=' relative'>
             <div className='Float-Button'>
@@ -90,7 +90,7 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
                 )}
                 {DeletemenuVisible ? (
                     <>
-                        <button className={` rounded-full px-[3.2rem] hover:text-white py-3 bg-purple-400 hover:bg-purple-500`} onClick={DeleteMenu}><BiX size={22} /></button>
+                        <button className={` rounded-full px-[2.7rem] hover:text-white py-[0.7rem] bg-purple-400 hover:bg-purple-500`} onClick={DeleteMenu}>close</button>
                         {/* <button className={`right-button bg-purple-400 `} ><BiCheck size={22} /></button> */}
                     </>
                 ) :

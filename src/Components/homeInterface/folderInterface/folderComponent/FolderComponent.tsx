@@ -3,14 +3,14 @@ import { FiFolder } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../reduxToolkit/store/store';
-// import { useSelector } from 'react-redux';
-// import { RootState } from '../../../../reduxToolkit/store/store';
 interface Folderprop {
     Foldertitle: string;
     Folderid: string | undefined;
 }
 const FolderComponent: React.FC<Folderprop> = ({ Foldertitle, Folderid }) => {
     const Navigate = useNavigate();
+
+
     const DateCapture = () => {
         const currentDate = new Date();
         const date: Intl.DateTimeFormatOptions = {
@@ -18,13 +18,8 @@ const FolderComponent: React.FC<Folderprop> = ({ Foldertitle, Folderid }) => {
             month: 'long',
             day: 'numeric',
         };
-        const formattedDate = currentDate.toLocaleDateString(undefined, date);
-        const [month, day, year] = formattedDate.split(' ');
-        const formattedResult = ` ${day} ${month}, ${year}`;
-        return formattedResult;
-    };
-    // const NotesLength = useSelector((state: RootState) => state.notesstore.NewNotesArray.length);
-    // onClick = {() => Navigate(`read-folder/${NotesLength}`)}
+        return currentDate.toLocaleDateString(undefined, date);
+    }
     const NewnotesArray = useSelector((state: RootState) => state.foldersstore.NewFolderArray[Folderid === undefined ? '0' : +Folderid]?.newnotes);
 
   return (

@@ -5,11 +5,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../reduxToolkit/store/store';
 
 const NotesInterface = () => {
-
     const NotesData = useSelector((state: RootState) => state.notesstore.NewNotesArray);
- 
-  
-    
+
+
     return (
         <>
             {NotesData?.length !== 0 && (

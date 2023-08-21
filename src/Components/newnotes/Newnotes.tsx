@@ -12,11 +12,14 @@ import { RootState } from '../../reduxToolkit/store/store';
 import { useDispatch } from 'react-redux';
 import { addNotes } from '../../reduxToolkit/dataSlice/Dataslice';
 import { useNavigate } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { Context } from '../../context/AppContext';
 
 
 const Newnotes: React.FC= () => {
     const Navigate = useNavigate()
+    const context = useContext(Context);
+    const {setDeletecheckMark } = context || {};
 
 
     const [Title, setTitle] = useState<string>('');
@@ -56,7 +59,9 @@ const Newnotes: React.FC= () => {
         setTimeout(() => {
             Navigate(-1);
         }, 2200);
-
+        if (setDeletecheckMark) {
+            setDeletecheckMark(false);
+        }
     };
 
 

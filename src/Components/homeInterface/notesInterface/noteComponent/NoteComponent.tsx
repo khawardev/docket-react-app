@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
+import { useContext} from 'react';
 import { Context } from '../../../../context/AppContext';
 import { deleteNotes } from '../../../../reduxToolkit/dataSlice/Dataslice';
 import { useDispatch } from 'react-redux';
@@ -20,27 +20,25 @@ const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description,
     const context = useContext(Context);
     const dispatch = useDispatch();
     const Navigate = useNavigate();
-    const [isClicked, setIsClicked] = useState(false);
-    const { DeletecheckMark } = context || {};
+    const { DeletecheckMark} = context || {};
 
 
 
     const handleClick = (clickedId: number) => {
-        setIsClicked(!isClicked);
         dispatch(deleteNotes(clickedId.toString()));
     };
 
+    
 
-
-    useEffect(() => {
-        if (DeletecheckMark === false) {
-            setIsClicked(false);
-        }
-    }, [DeletecheckMark]);
-
-
-
-
+    const DateCapture = () => {
+        const currentDate = new Date();
+        const date: Intl.DateTimeFormatOptions = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        };
+        return currentDate.toLocaleDateString(undefined, date);
+    }
 
     return (
 
@@ -56,7 +54,7 @@ const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description,
                         </div>
                     </div>
                     <div className='flex items-center justify-between'>
-                        <p className='text-sm text-slate-500'>March 12, 2023</p>
+                        <p className='text-sm text-slate-500'>{DateCapture()}</p>
                     </div>
                 </main>
 
