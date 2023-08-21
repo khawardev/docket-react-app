@@ -16,7 +16,6 @@ const Navbar: React.FC = () => {
     const context = useContext(Context)
     const { text, setText } = context || {};
     const inputRef = useRef<HTMLInputElement | null>(null);
-    console.log("🚀 ~ file: Navbar.tsx:17 ~ text:", text)
     const [query, setQuery] = useState<string>('');
     useEffect(() => {
         if (text) {

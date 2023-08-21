@@ -10,8 +10,8 @@ const NewFolder: React.FC = () => {
 
     return (
         <>
+            
             {folderData.length !== 0 &&
-
                 <div className=' select-none my-7'>
                     <section className=" w-11/12 m-auto flex items-center my-7">
                         <p className=" sm:text-4xl text-3xl font-extrabold ">Folders</p>
