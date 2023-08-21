@@ -102,6 +102,16 @@ const folderSlice = createSlice({
         addFolder: (state, action: PayloadAction<NewFolder>) => {
             state.NewFolderArray.push(action.payload);
         },
+        deleteFolder: (state, action: PayloadAction<string>) => {
+            const FolderIdToDelete = action.payload;
+            console.log("🚀 ~ file: Dataslice.tsx:107 ~ FolderIdToDelete:", FolderIdToDelete)
+            const updatedFolderArray = state.NewFolderArray.filter(obj => obj.Folderid !== FolderIdToDelete);
+
+            return {
+                ...state,
+                NewFolderArray: updatedFolderArray,
+            };
+        },
         addNewNoteToFolder: (state, action: PayloadAction<{ folderid: string | undefined; newNote: NewNotesF }>) => {
             const { folderid, newNote } = action.payload;
             const folderIndex = state.NewFolderArray.findIndex(folder => folder.Folderid === folderid);
@@ -129,7 +139,7 @@ const folderSlice = createSlice({
 
 });
 
-export const { addFolder, addNewNoteToFolder, editNewNoteToFolder } = folderSlice.actions;
+export const { addFolder, deleteFolder, addNewNoteToFolder, editNewNoteToFolder } = folderSlice.actions;
 export const FolderSlice = folderSlice.reducer;
 
 

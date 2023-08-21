@@ -70,7 +70,7 @@ const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description,
                         </div>
                     </div>
                     <div className='flex items-center justify-between'>
-                        <p className='text-sm text-slate-500'>March 12, 2023</p>
+                        <p className='text-sm text-slate-500'>{DateCapture()}</p>
                     </div>
                 </main>
 
