@@ -3,9 +3,9 @@ import './notesInterface.scss';
 import NoteComponent from './noteComponent/NoteComponent';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../reduxToolkit/store/store';
-import { useDispatch } from 'react-redux';
-import { clearFilteredNotes } from '../../../reduxToolkit/dataSlice/Dataslice';
-import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { clearFilteredNotes } from '../../../reduxToolkit/dataSlice/Dataslice';
+// import { useEffect } from 'react';
 interface NewNotes {
     id: string | undefined;
     title: string | undefined;
@@ -17,14 +17,17 @@ interface NotesInterfaceProps {
 const NotesInterface: React.FC<NotesInterfaceProps> = ({ filteredNotesArray }) => {
     const NotesData = useSelector((state: RootState) => state.notesstore.NewNotesArray);
     
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (NotesData.length !== 0) {
-            dispatch(clearFilteredNotes());
-        }
-    }, [NotesData]);
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     if (filteredNotesArray?.length !== 0) {
+    //         if (NotesData?.length !== 0) {
+    //             dispatch(clearFilteredNotes());
+    //         }
+    //     }
+    // }, [NotesData]);
 
+    
     return (
         <>
 

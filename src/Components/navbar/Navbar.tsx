@@ -15,6 +15,7 @@ const Navbar: React.FC = () => {
     const inputRef = useRef<HTMLInputElement | null>(null);                  // REF Hook: Disapear cursor after Enter 
     const [text, setText] = useState<string>('');                            // useState Hook: Storing Text after Enter 
     const [query, setQuery] = useState<string>('');                          // useState Hook: Storing Text Length
+    const [searchVisibility, setSearchVisibiblity] = useState(true)
     // const [isMoonIconVisible, setIsMoonIconVisible] = useState(true);        // useState Hook: Set dark and Light mode
     // console.log(text)
     useEffect(() => {
@@ -28,10 +29,8 @@ const Navbar: React.FC = () => {
             setText(event.currentTarget.value);
             setQuery('');
             inputRef.current?.blur();
-           
+            setSearchVisibiblity(false)
         }
-       
-
     };
 
     const [searchVisible, setSearchVisible] = useState(false);                // FUNCTION: Show Search Field at click in mobile screen
@@ -69,35 +68,43 @@ const Navbar: React.FC = () => {
                 <main className=" w-2/3 flex sm:justify-between justify-end items-center gap-2 ">
                     <div className='md:flex hidden items-center search-input-header-div'>
                         <div>
-                            <input
-                                type="text"
-                                placeholder="Search Notes"
-                                className="search-input px-3 font-medium  rounded-full"
-                                value={query}
-                                onChange={(event) => setQuery(event.target.value)}
-                                onKeyUp={searchQueryHandler}
-                                ref={inputRef}
-                            />
+                            {searchVisibility &&
+
+                                <input
+                                    type="text"
+                                    placeholder="Search Notes"
+                                    className="search-input px-3 font-medium  rounded-full"
+                                    value={query}
+                                    onChange={(event) => setQuery(event.target.value)}
+                                    onKeyUp={searchQueryHandler}
+                                    ref={inputRef}
+                                />
+                            }
                         </div>
-                        <div>
-                            <FiSearch size={22} style={{ strokeWidth: '2', color: `black` }} />
-                        </div>
+                        {searchVisibility &&
+                            <div>
+                                <FiSearch size={22} style={{ strokeWidth: '2', color: `black` }} />
+                            </div>
+                        }
+
                     </div>
 
                     <div className='md:hidden flex items-center search-input-header-div h-[2.86rem] '>
                         <div>
                             {searchVisible && (
                                 <>
-                                    <input
-                                        autoFocus
-                                        type="text"
-                                        placeholder="Search Notes"
-                                        className="search-input px-3 font-medium  rounded-full"
-                                        value={query}
-                                        onChange={(event) => setQuery(event.target.value)}
-                                        onKeyUp={searchQueryHandler}
-                                        ref={inputRef}
-                                    />
+                                    {searchVisibility &&
+                                        <input
+                                            autoFocus
+                                            type="text"
+                                            placeholder="Search Notes"
+                                            className="search-input px-3 font-medium  rounded-full"
+                                            value={query}
+                                            onChange={(event) => setQuery(event.target.value)}
+                                            onKeyUp={searchQueryHandler}
+                                            ref={inputRef}
+                                        />
+                                    }
                                 </>
                             )}
 
@@ -106,8 +113,13 @@ const Navbar: React.FC = () => {
                             {searchVisible ? (
                                 <BiX size={28} style={{ color: `black` }} onClick={handleSearchClick} />
                             ) : (
-
-                                <FiSearch size={22} style={{ strokeWidth: '2', color: `black` }} onClick={handleSearchClick} />
+                                <>
+                                    {searchVisibility &&
+                                        <>
+                                            <FiSearch size={22} style={{ strokeWidth: '2', color: `black` }} onClick={handleSearchClick} />
+                                        </>
+                                    }
+                                </>
 
                             )}
                         </div>
