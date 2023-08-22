@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { searchNotes, clearFilteredNotes } from '../../../reduxToolkit/dataSlice/Dataslice';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBack } from 'react-icons/io5';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Context } from '../../../context/AppContext';
 import { RootState } from '../../../reduxToolkit/store/store';
 import { useSelector } from 'react-redux';
@@ -12,20 +13,26 @@ import NotesInterface from "../../homeInterface/notesInterface/NotesInterface";
 
 const SeacrhQuery = () => {
     const context = useContext(Context)
-    const {setText} = context || {};
+    const { setText } = context || {};
     const Navigate = useNavigate()
     const dispatch = useDispatch();
     const { query } = useParams()
+    useEffect(() => {
+        if (query) {
+            dispatch(searchNotes(query ? query : ''));
+        }
+    }, [query])
 
-    dispatch(searchNotes(query ? query : ''));
     const filteredNotesArray = useSelector((state: RootState) => state.notesstore.filteredNotesArray);
+    const filteredNotesArrayLength = useSelector((state: RootState) => state.notesstore.filteredNotesArray.length);
+    console.log("🚀 ~ file: SeacrhQuery.tsx:22 ~ SeacrhQuery ~ filteredNotesArray:", filteredNotesArray)
     const navigateBack = () => {
+        dispatch(clearFilteredNotes());
         if (setText) {
             setText('')
         }
-        dispatch(clearFilteredNotes());
         Navigate('/');
-       
+
     };
 
     return (
@@ -41,7 +48,16 @@ const SeacrhQuery = () => {
 
                     </section>
                 </section>
-                <NotesInterface filteredNotesArray={filteredNotesArray} />
+                {filteredNotesArrayLength !== 0 ? <>   <NotesInterface filteredNotesArray={filteredNotesArray} /> </> :
+
+                    <>
+                        <div className=" w-11/12 m-auto my-7 text-xl">
+                            No Match Found !!
+                        </div>
+
+                    </>
+                }
+
             </div>
 
 
@@ -50,7 +66,7 @@ const SeacrhQuery = () => {
 
 
         </>
-    ) 
+    )
 }
 
 export default SeacrhQuery

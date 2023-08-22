@@ -1,23 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../reduxToolkit/store/store';
 import FolderComponent from './folderComponent/FolderComponent';
-import { useContext, } from 'react';
-import { Context } from '../../../context/AppContext';
-const NewFolder: React.FC = () => {
-    const context = useContext(Context);
 
-    const { setDeletecheckMark } = context || {};
+const NewFolder: React.FC = () => {
+
     const folderData = useSelector((state: RootState) => state.foldersstore.NewFolderArray);
-    const folderDatalength = useSelector((state: RootState) => state.foldersstore.NewFolderArray.length);
-    console.log("🚀 ~ file: FolderInterface.tsx:13 ~ folderDatalength:", folderDatalength)
-    useEffect(() => {
-        if (folderDatalength == 0) {
-            if (setDeletecheckMark) {
-                setDeletecheckMark(false)
-            }
-        }
-    }, [folderDatalength])
+    // const folderDatalength = useSelector((state: RootState) => state.foldersstore.NewFolderArray.length);
+    // console.log("🚀 ~ file: FolderInterface.tsx:13 ~ folderDatalength:", folderDatalength)
+    // useEffect(() => {
+    //     if (folderDatalength == 0) {
+    //         
+    //     }
+    // }, [folderDatalength])
 
 
     return (

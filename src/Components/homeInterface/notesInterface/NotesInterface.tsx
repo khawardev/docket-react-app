@@ -22,7 +22,7 @@ const NotesInterface: React.FC<NotesInterfaceProps> = ({ filteredNotesArray }) =
             {filteredNotesArray?.length !== 0 ? (
                 <section className='w-11/12 m-auto mt-7 grid sm:grid-cols-3 grid-cols-1 sm:gap-4 gap-2'>
                     {filteredNotesArray?.map((note, index) => (
-                        <NoteComponent key={index} id={note.id} title={note.title} description={note.description} />
+                        <NoteComponent key={index} filterid={note.id} title={note.title} description={note.description} />
                     ))}
                 </section>
             ) :

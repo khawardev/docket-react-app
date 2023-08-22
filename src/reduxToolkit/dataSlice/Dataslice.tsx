@@ -50,7 +50,12 @@ const notesSlice = createSlice({
             const filteredNotesArray = state.NewNotesArray.filter(obj =>
                 obj.title && obj.title.toLowerCase().includes(searchTerm)
             );
-
+            if (filteredNotesArray.length === 0) {
+                return {
+                    ...state,
+                    filteredNotesArray: [],
+                };
+            }
             return {
                 ...state,
                 filteredNotesArray,
@@ -104,7 +109,6 @@ const folderSlice = createSlice({
         },
         deleteFolder: (state, action: PayloadAction<string>) => {
             const FolderIdToDelete = action.payload;
-            console.log("🚀 ~ file: Dataslice.tsx:107 ~ FolderIdToDelete:", FolderIdToDelete)
             const updatedFolderArray = state.NewFolderArray.filter(obj => obj.Folderid !== FolderIdToDelete);
 
             return {

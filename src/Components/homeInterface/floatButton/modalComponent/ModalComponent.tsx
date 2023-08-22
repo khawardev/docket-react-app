@@ -3,12 +3,17 @@ import { addFolder } from '../../../../reduxToolkit/dataSlice/Dataslice';
 import { useState, KeyboardEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../reduxToolkit/store/store';
+
+import { useContext, } from 'react';
+import { Context } from '../../../../context/AppContext';
 interface ModalProps {
   handleModal: () => void;
   isModalOpen:boolean
 }
 
 const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
+  const context = useContext(Context);
+  const { setDeletecheckMark } = context || {};
   const [query, setQuery] = useState<string>('');
   const dispatch = useDispatch();
   const NotesLength = useSelector((state: RootState) => state.foldersstore.NewFolderArray.length);
@@ -19,6 +24,11 @@ const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
       dispatch(addFolder(folderObject))
       setQuery('');
       handleModal()
+
+      if (setDeletecheckMark) {
+        setDeletecheckMark(false)
+      }
+
     }
 
   };
@@ -28,9 +38,20 @@ const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
       dispatch(addFolder(folderObject))
       setQuery('');
       handleModal();
+
+      if (setDeletecheckMark) {
+        setDeletecheckMark(false)
+      }
+
     }
 
   };
+
+
+
+
+
+
 
   return (
     <>

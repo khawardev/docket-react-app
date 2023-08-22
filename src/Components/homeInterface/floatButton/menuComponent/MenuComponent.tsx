@@ -95,8 +95,13 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
                     </>
                 ) :
                     <>
-                        <button className={`left-button bg-purple-400`} onClick={DeleteMenu}><AiOutlineDelete size={22} /></button>
-                        <button className={`${bgcolor} ${textcolor} right-button`} onClick={toggleMenu}><RiAddFill size={22} /></button>
+                        {foldernewnotes ? <>
+                            <button className={`${bgcolor} ${textcolor} rounded-full px-[2.9rem] hover:text-white py-[0.7rem] bg-purple-400 hover:bg-purple-500`} onClick={toggleMenu}>Add</button>
+                        </> : <>
+                                <button className={`left-button bg-purple-400`} onClick={DeleteMenu}><AiOutlineDelete size={22} /></button>
+                                <button className={`${bgcolor} ${textcolor} right-button`} onClick={toggleMenu}><RiAddFill size={22} /></button>
+                        </>}
+                        
                     </>
                 }
             </div>

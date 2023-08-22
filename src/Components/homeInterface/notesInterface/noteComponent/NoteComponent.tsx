@@ -12,9 +12,10 @@ interface NoteProps {
 }
 interface FolderId {
     folderid?: string;
+    filterid?:string
 }
 
-const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description, newnotesid, folderid }) => {
+const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description, newnotesid, folderid, filterid }) => {
 
     
     const context = useContext(Context);
@@ -43,6 +44,22 @@ const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description,
     return (
 
         <>
+            {filterid && <>
+                <main className={` bg-slate-100 p-5 rounded-2xl hover:bg-slate-200 hover:cursor-pointer  flex justify-between flex-col`} onClick={() => Navigate(`/read-notes/${filterid}`)}>
+                    <div>
+                        <div className='sm:text-xl text-base font-semibold text-slate-700 limited-heading-lines'>
+                            {title}
+                        </div>
+                        <div className='my-3 text-slate-600 paragraph-heading-lines'>
+                            {description}
+                        </div>
+                    </div>
+                    <div className='flex items-center justify-between'>
+                        <p className='text-sm text-slate-500'>{DateCapture()}</p>
+                    </div>
+                </main>
+
+            </>}
             {id && <>
                 <main className={` bg-slate-100 p-5 rounded-2xl ${DeletecheckMark ? 'hover:bg-red-100' : 'hover:bg-slate-200'} hover:cursor-pointer  flex justify-between flex-col`} onClick={DeletecheckMark ? () => handleClick(+id) : () => Navigate(`/read-notes/${id}`)}>
                     <div>
