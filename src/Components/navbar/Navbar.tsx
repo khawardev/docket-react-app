@@ -10,6 +10,8 @@ import { BiX } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../context/AppContext';
+import { FaHeart } from 'react-icons/fa';
+
 const Navbar: React.FC = () => {
 
     const Navigate = useNavigate();
@@ -102,19 +104,11 @@ const Navbar: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* <div className="gap-2 flex ">
-                        <button className='flex  items-center justify-center p-3 rounded-full toggle-button' onClick={togglemode} >
-                            {isMoonIconVisible ? (
-                                <BsSun size={22} />
-
-                            ) : (
-                                <FaMoon size={22} />
-                            )}
+                    <div className=" flex justify-center ">
+                        <button className='flex   items-center justify-center p-4 rounded-full toggle-button' >
+                            <span className='' style={{ color:'#A855F7'}}> <FaHeart /> </span>  
                         </button>
-                        <div>
-                            <button className='flex  items-center justify-center p-3 rounded-full toggle-button'><IoPersonOutline size={22} /></button>
-                        </div>
-                    </div> */}
+                    </div> 
                 </main>
             </section>
 

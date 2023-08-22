@@ -10,7 +10,7 @@ import NewFolderNotes from './Components/newFolderNotes/NewFolderNotes';
 import EditNotesFolder from './Components/readnotesFolder/editNotesFolder/EditnotesFolder';
 import SeacrhQuery from './Components/navbar/seacrhQuery/SeacrhQuery';
 const App: React.FC = () => {
-
+ 
   return (
     <>
 
