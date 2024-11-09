@@ -8,11 +8,6 @@ interface Foldernewnotesprops {
     folderid: string;
 }
 const FloatButton: React.FC<Foldernewnotesprops> = ({ foldernewnotes, folderid }) => {
-  
-
-
-
-
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const handleModal = () => {

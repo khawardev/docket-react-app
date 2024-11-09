@@ -48,11 +48,6 @@ const ModalComponent: React.FC<ModalProps> = ({ handleModal, isModalOpen }) => {
   };
 
 
-
-
-
-
-
   return (
     <>
       

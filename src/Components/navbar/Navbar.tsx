@@ -17,8 +17,8 @@ const Navbar: React.FC = () => {
     const Navigate = useNavigate();
     const context = useContext(Context)
     const { text, setText } = context || {};
-    const inputRef = useRef<HTMLInputElement | null>(null);
     const [query, setQuery] = useState<string>('');
+    const inputRef = useRef<HTMLInputElement | null>(null);
     useEffect(() => {
         if (text) {
             Navigate(`search-notes/${text}`)
