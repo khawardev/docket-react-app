@@ -11,7 +11,7 @@ import EditNotesFolder from './Components/readnotesFolder/editNotesFolder/Editno
 import SeacrhQuery from './Components/navbar/seacrhQuery/SeacrhQuery';
 import Footer from './Components/Footer';
 const App: React.FC = () => {
- 
+
   return (
     <>
 
@@ -27,7 +27,7 @@ const App: React.FC = () => {
           <Route path={`read-folder/:readfolderId/new-notes/:newnotesId`} element={<NewFolderNotes />} />
           <Route path={`/read-folder/:folderid/notes/:newnotesid`} element={<EditNotesFolder />} />
         </Routes>
-        <Footer/>
+          <Footer />
       </Router>
     </>
   )

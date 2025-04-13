@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-      <div className="md:flex items-center whitespace-nowrap md:space-x-7  w-11/12 mx-auto">
+      <div className="md:flex   items-center whitespace-nowrap md:space-x-7  w-11/12 mx-auto">
           <div className="flex items-center gap-2 md:w-full">
               
               <div className="select-none flex items-center">
