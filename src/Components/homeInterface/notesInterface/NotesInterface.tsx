@@ -29,7 +29,7 @@ const NotesInterface: React.FC<NotesInterfaceProps> = ({ filteredNotesArray }) =
                 <>
 
                     {NotesData?.length === 0 && folderData?.length === 0 && (
-                        <div className='w-11/12 bg-slate-200 rounded-2xl sm:py-60 py-52 my-4 m-auto'>
+                        <div className='w-11/12 border bg-slate-200 rounded-2xl sm:py-60 py-52 my-4 m-auto'>
                             <section className='sm:text-2xl text-purple-500 font-bold flex justify-center items-center select-none text-2xl'>
                                 Please add notes/folder
                             </section>
