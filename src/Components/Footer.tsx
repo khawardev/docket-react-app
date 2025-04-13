@@ -31,7 +31,7 @@ const Footer = () => {
                       </a>
                   </p>
                   <img
-                      className="sm:block hidden rounded-lg"
+                      className="sm:block  rounded-lg"
                       src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png"
                       alt="GitHub Logo"
                       width={25}
