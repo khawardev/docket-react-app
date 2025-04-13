@@ -44,14 +44,14 @@ const SeacrhQuery = () => {
                         <div className='bg-slate-200 p-2 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300'>
                             <IoChevronBack />
                         </div>
-                        <p className=" text-2xl font-extrabold">Search Results</p>
+                        <p className=" text-xl font-bold">Search Results</p>
 
                     </section>
                 </section>
                 {filteredNotesArrayLength !== 0 ? <>   <NotesInterface filteredNotesArray={filteredNotesArray} /> </> :
 
                     <>
-                        <div className=" w-11/12 m-auto my-7 text-xl">
+                        <div className=" w-11/12 m-auto my-7 text-base">
                             No Match Found !!
                         </div>
 

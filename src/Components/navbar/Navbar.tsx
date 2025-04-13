@@ -10,7 +10,6 @@ import { BiX } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../context/AppContext';
-import { FaHeart } from 'react-icons/fa';
 
 const Navbar: React.FC = () => {
 
@@ -74,7 +73,7 @@ const Navbar: React.FC = () => {
 
                     </div>
 
-                    <div className='md:hidden flex items-center search-input-header-div h-[2.86rem] '>
+                    <div className='md:hidden flex items-center border search-input-header-div h-[2.86rem] '>
                         <div>
                             {searchVisible && (
                                 <>
@@ -104,11 +103,7 @@ const Navbar: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className=" flex justify-center  ">
-                        <button className='flex  border items-center justify-center p-4 rounded-full toggle-button' >
-                            <span className='' style={{ color:'#A855F7'}}> <FaHeart /> </span>  
-                        </button>
-                    </div> 
+                   
                 </main>
             </section>
 
