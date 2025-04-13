@@ -43,7 +43,7 @@ const FolderComponent: React.FC<Folderprop> = ({ Foldertitle, Folderid }) => {
 
     return (
         <>
-            <main className={` bg-slate-100 sm:p-5 p-4 rounded-2xl hover:cursor-pointer ${DeletecheckMark ? 'hover:bg-red-100' : 'hover:bg-slate-200'}`} onClick={DeletecheckMark ? () => handleClick(Folderid === undefined ? undefined : +Folderid) : () => Navigate(`read-folder/${Folderid}`)} >
+            <main className={` bg-slate-100 sm:p-5 p-4 border rounded-2xl hover:cursor-pointer ${DeletecheckMark ? 'hover:bg-red-100' : 'hover:bg-slate-200'}`} onClick={DeletecheckMark ? () => handleClick(Folderid === undefined ? undefined : +Folderid) : () => Navigate(`read-folder/${Folderid}`)} >
                 <div className=' flex items-center  justify-between  '>
                     <p className=' bg-purple-400 rounded-full sm:px-3 px-2 text-white sm:text-base text-sm'>{Foldertitle}</p>
                     <p className=' text-lg milestone-num font-bold'>{NewnotesArray.length}</p>

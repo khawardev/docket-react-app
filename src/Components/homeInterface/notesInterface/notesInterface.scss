@@ -5,7 +5,7 @@ $background-hover-color_1: rgb(168 85 247);
 
 .Float-Button {
   position: fixed;
-  bottom: 5%;
+  bottom: 3%;
   right: 5%;
 }
 .menu-container {
@@ -17,7 +17,7 @@ $background-hover-color_1: rgb(168 85 247);
   border-radius: 16px;
   padding: 8px 6px;
   margin-bottom: 10px;
-  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+  // box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   li {

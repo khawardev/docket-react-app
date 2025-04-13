@@ -39,11 +39,6 @@ const MenuComponent: React.FC<MenuProps> = ({ handleModal, foldernewnotes, folde
     }
     const { DeletecheckMark,  setDeletecheckMark } = context || {};
 
-
-
-
-
-
     const toggleMenu = () => {
         setMenuVisible(!menuVisible)
         if (!menuVisible) {

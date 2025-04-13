@@ -44,7 +44,7 @@ const SeacrhQuery = () => {
                         <div className='bg-slate-200 p-2 rounded-full flex justify-center items-center hover:cursor-pointer hover:bg-slate-300'>
                             <IoChevronBack />
                         </div>
-                        <p className="sm:text-3xl text-3xl font-extrabold">Search Results</p>
+                        <p className=" text-2xl font-extrabold">Search Results</p>
 
                     </section>
                 </section>

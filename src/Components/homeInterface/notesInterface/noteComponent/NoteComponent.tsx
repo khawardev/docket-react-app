@@ -45,9 +45,9 @@ const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description,
 
         <>
             {filterid && <>
-                <main className={` bg-slate-100 p-5 rounded-2xl hover:bg-slate-200 hover:cursor-pointer  flex justify-between flex-col`} onClick={() => Navigate(`/read-notes/${filterid}`)}>
+                <main className={` bg-slate-100 p-5 rounded-2xl border hover:bg-slate-200 hover:cursor-pointer  flex justify-between flex-col`} onClick={() => Navigate(`/read-notes/${filterid}`)}>
                     <div>
-                        <div className='sm:text-xl text-base font-semibold text-slate-700 limited-heading-lines'>
+                        <div className='sm:text-xl text-base font-bold text-slate-700 limited-heading-lines'>
                             {title}
                         </div>
                         <div className='my-3 text-slate-600 paragraph-heading-lines'>
@@ -61,9 +61,9 @@ const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description,
 
             </>}
             {id && <>
-                <main className={` bg-slate-100 p-5 rounded-2xl ${DeletecheckMark ? 'hover:bg-red-100' : 'hover:bg-slate-200'} hover:cursor-pointer  flex justify-between flex-col`} onClick={DeletecheckMark ? () => handleClick(+id) : () => Navigate(`/read-notes/${id}`)}>
+                <main className={` bg-slate-100 p-5 border rounded-2xl ${DeletecheckMark ? 'hover:bg-red-100' : 'hover:bg-slate-200'} hover:cursor-pointer  flex justify-between flex-col`} onClick={DeletecheckMark ? () => handleClick(+id) : () => Navigate(`/read-notes/${id}`)}>
                     <div>
-                        <div className='sm:text-xl text-base font-semibold text-slate-700 limited-heading-lines'>
+                        <div className='sm:text-xl text-base font-bold text-slate-700 limited-heading-lines'>
                             {title}
                         </div>
                         <div className='my-3 text-slate-600 paragraph-heading-lines'>
@@ -77,7 +77,7 @@ const NoteComponent: React.FC<NoteProps & FolderId> = ({ id, title, description,
 
             </>}
             {newnotesid && <>
-                <main className='bg-slate-100 p-5 rounded-2xl hover:cursor-pointer hover:bg-slate-200 flex justify-between flex-col' onClick={() => Navigate(`/read-folder/${folderid}/notes/${newnotesid}`)}>
+                <main className='bg-slate-100 p-5 border rounded-2xl hover:cursor-pointer hover:bg-slate-200 flex justify-between flex-col' onClick={() => Navigate(`/read-folder/${folderid}/notes/${newnotesid}`)}>
                     <div>
                         <div className='sm:text-xl text-base font-semibold text-slate-700 limited-heading-lines'>
                             {title}

@@ -48,20 +48,20 @@ const Navbar: React.FC = () => {
 
             <section className="sm:w-10/12 w-11/12  m-auto flex items-center justify-between mt-5">
                 <nav className=" w-1/3  flex items-center  text-purple-500 select-none" >
-                    <div className='text-3xl hover:cursor-pointer' onClick={() => Navigate("/")}>
+                    <div className='text-2xl hover:cursor-pointer' onClick={() => Navigate("/")}>
                         <FaRegNoteSticky />
                     </div>
-                    <a className="text-3xl  font-extrabold hover:cursor-pointer " onClick={() => Navigate("/")}>Docket</a>
+                    <a className="text-2xl  font-extrabold hover:cursor-pointer " onClick={() => Navigate("/")}>Docket</a>
                 </nav>
 
                 <main className=" w-2/3 flex sm:justify-between justify-end items-center gap-2 ">
-                    <div className='md:flex hidden items-center search-input-header-div'>
+                    <div className='md:flex hidden items-center search-input-header-div border'>
                         <div>
 
                             <input
                                 type="text"
                                 placeholder="Search Notes"
-                                className="search-input px-3 font-medium  rounded-full"
+                                className="search-input px-3  font-medium  rounded-full"
                                 value={query}
                                 onChange={(event) => setQuery(event.target.value)}
                                 onKeyUp={searchQueryHandler}
@@ -104,8 +104,8 @@ const Navbar: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className=" flex justify-center ">
-                        <button className='flex   items-center justify-center p-4 rounded-full toggle-button' >
+                    <div className=" flex justify-center  ">
+                        <button className='flex  border items-center justify-center p-4 rounded-full toggle-button' >
                             <span className='' style={{ color:'#A855F7'}}> <FaHeart /> </span>  
                         </button>
                     </div> 
