@@ -1,46 +1,35 @@
-
 const Footer = () => {
-  return (
-      <div className="md:flex   items-center whitespace-nowrap md:space-x-7  w-11/12 mx-auto">
-          <div className="flex items-center gap-2 md:w-full">
-              
-              <div className="select-none flex items-center">
-                  <p className="sohne_bold font-bold">
-                      <span className="text-muted-foreground">By</span>{" "}
-                      <a
-                          className="underline"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://khawarsultan.vercel.app"
-                      >
-                          Khawar Sultan
-                      </a>
-                  </p>
-                  <img src={'https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx'} alt='s' width={30} height={100} />
-              </div>
-              <div className="select-none flex items-center gap-2">
-                  <p className="sohne_bold font-bold ">
-                      <span className="text-muted-foreground"></span>
-                      <a
-                          className="underline"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href="https://github.com/khawardev/docket-react-app"
-                      >
-                          Github
-                      </a>
-                  </p>
-                  <img
-                      className="sm:block  rounded-lg"
-                      src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png"
-                      alt="GitHub Logo"
-                      width={25}
-                      height={100}
-                  />
-              </div>
-          </div>
-      </div>
-  )
-}
+    return (
+        <div className="select-none flex items-center ">
+            <a
+                href="https://khawarsultan.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1  hover:bg-slate-200 rounded-lg"
+            >
+                <img
+                    src="https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx"
+                    alt="Portfolio"
+                    width={30}
+                    height={100}
+                />
+            </a>
+            <a
+                href="https://github.com/khawardev/docket-react-app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-[9px]  hover:bg-slate-200 rounded-lg"
+            >
+                <img
+                    className="sm:block rounded-md"
+                    src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png"
+                    alt="GitHub Logo"
+                    width={20}
+                    height={100}
+                />
+            </a>
+        </div>
+    );
+};
 
-export default Footer
+export default Footer;

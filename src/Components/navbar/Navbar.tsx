@@ -10,6 +10,7 @@ import { BiX } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../context/AppContext';
+import Footer from '../Footer';
 
 const Navbar: React.FC = () => {
 
@@ -102,7 +103,7 @@ const Navbar: React.FC = () => {
                             )}
                         </div>
                     </div>
-
+                    <Footer />
                    
                 </main>
             </section>
